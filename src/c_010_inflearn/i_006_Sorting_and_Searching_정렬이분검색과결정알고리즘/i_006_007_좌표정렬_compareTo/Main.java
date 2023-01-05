@@ -1,11 +1,12 @@
-## 좌표정렬 그냥 외우자
+package c_010_inflearn.i_006_Sorting_and_Searching_정렬이분검색과결정알고리즘.i_006_007_좌표정렬_compareTo;
+
 import java.util.*;
 
 public class Main {
 
-//https://www.c_010_inflearn.com/course/%EC%9E%90%EB%B0%94-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4-%EC%BD%94%ED%85%8C%EB%8C%80%EB%B9%84/unit/72760?tab=curriculum
+//https://www.inflearn.com/course/%EC%9E%90%EB%B0%94-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4-%EC%BD%94%ED%85%8C%EB%8C%80%EB%B9%84/unit/72760?tab=curriculum
 
-//https://cote.c_010_inflearn.com/contest/10/problem/06-07
+//https://cote.inflearn.com/contest/10/problem/06-07
 
 /*
 7. 좌표 정렬
