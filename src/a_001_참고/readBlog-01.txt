@@ -1,0 +1,1110 @@
+# Java 문법 - 블로그 01
+
+[https://velog.io/@hygge/Java-코딩테스트-문법-속성-정리](https://velog.io/@hygge/Java-%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8-%EB%AC%B8%EB%B2%95-%EC%86%8D%EC%84%B1-%EC%A0%95%EB%A6%AC)
+
+[https://bethejustice.tistory.com/22](https://bethejustice.tistory.com/22)
+
+[https://eocoding.tistory.com/92](https://eocoding.tistory.com/92)
+
+[https://lkitty0302.tistory.com/6](https://lkitty0302.tistory.com/6)
+
+[https://velog.io/@ryusuz/JAVA-코딩테스트용-주요-함수-모음](https://velog.io/@ryusuz/JAVA-%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%9A%A9-%EC%A3%BC%EC%9A%94-%ED%95%A8%EC%88%98-%EB%AA%A8%EC%9D%8C)
+
+[https://jeongkyun-it.tistory.com/198](https://jeongkyun-it.tistory.com/198)
+
+[https://gwang920.github.io/java/Java-condingGrammer/](https://gwang920.github.io/java/Java-condingGrammer/)
+
+## Scanner와 BufferedReader
+
+- 스캐너가 비교적 나중에 나온 것이기 때문에 다양한 메소드가 있지만, 느리다.
+- 큰 파일을 읽을 때는 BufferedReader가 좋다.
+- Scanner는 StringTokenizer 대신 userDelimiter를 사용할 수 있다.
+- BufferedReader는 예외를 던지기 때문에 처리해 주어야한다.
+- BufferedReader에 매개변수로 들어가는 InpuStreamReader는 문자열을 Chracter 단위(한글자)로 읽어 들어온다. 때문에 긴 문자열을 읽어 들일 때 불편하다.
+- BufferedReader는 버퍼를 사용하여 이러한 불편함을 제거한다. 요청이 있을때 마다 읽어오는 것이 아니라, 한번에 버퍼에 저장한후 요청이 있으면 버퍼에서 읽어오는 방식이다. 공백도 문자열로 인식하여 받는다.
+- 반면 Scanner는 공백과 줄바꿈을 모두 입력의 경계로 인식한다. 때문에 데이터를 쉽게 입력받을 수 있다. 또한 데이터 타입이 입력 받는 시점에서 결정되기 때문에 Casting이 필요하지 않는다.(함수 사용)
+
+### 라이브러리
+
+
+import java.util.*;
+import java.io.*;
+
+
+### 변수 선언
+
+
+String[] arr1 = new String[5];
+int[] arr2 = {1, 2, 3};
+
+int N = 3;
+int[] arr3 = new Int[N];
+
+
+### 형변환
+
+
+//char -> int
+char myChar = '3';
+int myInt = Character.getNumericValue(myChar);
+System.out.println(myInt);
+//결과 : 3
+
+//String -> Char
+String myString = "apple";
+char[] myChars = myString.toCharArray(myString);
+
+for (int i = 0; i < myChars.length; i++) {
+	System.out.println(myChars[i]);
+}
+
+
+### Set → List 형변환
+
+
+//생성자에 값을 넣어주면 Set -> List로 변경할 수 있다.
+Set<String> set = new HashSet<String>();
+List<String> menuList = new ArrayList<>(set);
+
+
+## Scanner
+
+
+import java.util.*;
+
+Scanner sc = new Scanner(System.in)
+
+int T = sc.nextInt();
+
+
+## BufferedReader
+
+- 'BurredReader클래스는Enter'를 경계로 입력값을 인식한다.
+- 'readLine()' 메소드는 개행문자('Enter')를 포함해String' 형식으로 입력을 받아온다.
+- 따라서,int'형으로readLine()을 받아오려면Integer.pareseInt()로 형변환이 필요하다.
+
+
+import java.io.*;
+
+BufferedReader br = new BufferedReader(new InputStreamReader(System.in);
+
+int T = Integer.parseInt(br.readLine());
+
+
+## StringTokenizer
+
+생성자의 첫번째 매개변수는 String값이다. 두번째는 delimiter인데 기본의 공백으로 주어져있기 때문에 공백 문자열을 받아오려면 매개변수 하나만 보내면된다. 구분된 문자열은 nextToken()함수로 불러올 수 있다. 역시 스트링값을 반환하기 때문에 알맞은 원시형으로 변환해 주어야 한다.
+
+hasMoreToken() 메소들를 활용하면, while문을 통해 문자토큰이 끝날 때 까지 반복문을 작성할 수 있다.
+
+
+StringTokenizer st = new StringTokenizer(br.readLine(), “ “);
+
+int T = Integer.parseInt(st.nextToken());
+
+int N = Integer.parseInt(st.nextToken());
+
+
+
+[입력]
+3 3
+111
+222
+333
+
+[출력]
+3 3
+111
+222
+333
+
+public static void main(String[] args) throws Exception {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        int N = Integer.parseInt(st.nextToken());
+        int M = Integer.parseInt(st.nextToken());
+
+        int[][] arr = new int[N][M];
+
+        for (int i = 0; i < N; i++) {
+            String str = br.readLine();
+            for (int j = 0; j < M; i++) {
+                arr[i][j] = Integer.parseInt(String.valueOf(str.charAt(j)));
+            }
+        }
+
+        System.out.println(N + " " + M);
+
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < M; j++) {
+                System.out.print(arr[i][j]);
+            }
+
+            System.out.println();
+
+        }
+    }
+
+
+## BufferedWriter
+
+BufferedReader와 비슷하다. System.out.println()과는 다르게 개행되지 않기때문에 개행하고 싶다면\n' 을 마지막에 넣어주면 된다.
+
+flush()는 스트림에 남아있을 수 있는 문자를 빼는 역할을 한다. bw는 다 사용했다면 꼭 close()를 하도록 하자.
+
+
+BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+bw.write(”Hello World\n”);
+
+bw.flush();
+
+bw.close();
+
+
+## BufferedReader, BufferedWriter 데이터 입출력 방법
+
+
+//데이터를 입력받아 공백을 기준으로 변수에 저장하는 방법
+try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+     BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out))
+) {
+    StringTokenizer st = new StringTokenizer(br.readLine());
+
+    int a = Integer.parseInt(st.nextToken());
+    int b = Integer.parseInt(st.nextToken());
+
+    bw.write(a + b);
+
+    //문자열로 입력받아서 공백을 기준으로 배열에 넣어주는 방법
+    String sp = br.readLine();
+    String[] array = sp.split(" ");
+
+} catch (Exception e) {
+    e.printStackTrace();
+}
+
+
+### [Math 라이브러리]
+
+
+//최대, 최소
+Math.max(10, 2);
+Math.min(10, 2);
+
+//절대값
+Math.abs();
+
+//올림, 내림, 반올림
+Math.ceil(-3.2); // -3
+Math.floor(-3.2); // -4
+Math.rount(-3.26); // -3 - 첫째자리에서 반올림
+
+//소수 둘째, 셋째 자리에서 반올림하고 싶다면
+double a = 1.23456;
+String b = String.format("%.1f", a); // .1f는 둘째 자리에서 반올림
+
+//제곱, 제곱근
+Math.pow(2, 2); // 2 ^ 2 = 4
+Math.sqrt(4); // 2
+
+
+## 문자열 String
+
+- str.length() : 문자열의 길이 반환
+- str.isEmpty() : 문자열이 비어있는지 확인
+- str1.equals(str2) : 문자열을 비교
+- str1.compareTo(str2) : 문자열을 사전순으로 비교
+    - str1이 str보다 사전순으로 앞인 경우 -1, 같은 경우 0, 뒤인 경우 1을 반환
+- str.indexOf(’c’) : 문자열 ‘c’의 인덱스 반환
+- str.lastIndexOf(’c’) : 문자열 ‘c’의 마지막 인덱스 반환
+- str.subString(start, end) : start인덱스부터 end-1 인덱스까지 문자열 자르기
+- str1.concat(str2) : 문자열 합치기
+- str.replace(’변경될 문자열, ‘변경할 문자열’) : 변경될 문자열을 변경할 문자열로 바꿔준다
+- str.contains(’k’) : str문자열에 k라는 문자가 있는 경우 true 반환
+- str.split(” “) : 괄호 안의 매개변수를 기준으로 문자열 자르기
+- str.trim() : 문자열의 앞뒤 공백 제거
+- var.toString() : int형 변수를 string으로 변환
+- str.parseInt() : 문자형 변수 str을 int형으로 변환
+- str.append() : str1 + str2 문자열 더하기
+
+### [String]
+
+
+String str = "hello world";
+
+//자르기
+str.split(" ");
+str.substring(0, 5);
+for (int i = 0; i < str.length(); i++) {
+	str.charAt(i);
+}
+
+//문자열을 배열로 만들고 싶을 때
+String str = "12345";
+String[] Arr = str.split("");
+
+//대소문자변경
+str = str.toUpperCase();
+str = str.toLowerCase();
+
+//한번 쓴 문자열은 변경 불가. substring 이용해서 새로운 변수로 선언해야 함
+String name = "starfucks";
+String newname = name.substring(0, 4) + 'b' + name.substring(5); // starbucks
+
+
+
+String str = "abcde";
+
+str.length() // str의 길이 반환
+str.isEmpty() // str의 길이가 0이면 true, 아니면 false
+
+str.charAt(2) // 인덱스로 문자 찾기, c 반환
+str.indexOf("c") // 문자로 첫번째 인덱스 찾기, 2 반환
+str.lastIndexOf("c") // 문자의 마지막 인덱스 찾기, 2 반환
+
+str.substring(2, 4) // 2~3위치의 문자열 cd 반환
+string.substring(3) // 3부터 끝까지의 문자열 de 반환
+
+str.replace('b', 'k') // b를 k로 변경 akcde
+
+str.equals("abcde") // str과 abcde를 비교해서 같으면 true, 다르면 false
+str.contains("bc") // str에 bc가 포함되어 있으면 true, 다르면 false
+
+str.split(" ") // 띄어쓰기로 구분된 문자열 str을 분리해서 String[] 배열 반환
+str.split() // 띄어쓰기 없는 문자열 str을 한 문자씩 분리해서 String[] 배열 반환
+
+str.trim() // str의 앞뒤공백 제거, 문자열 사이 공백은 제거 안함
+
+str.toLowerCase() // 대문자를 소문자로 모두 변경
+str.toUpperCase() // 소문자를 모두 대문자로 변경
+
+str.compareTo("abcdd")
+/*
+str과 abcdd가 같으면 0
+str이 abcdd보다 사전순으로 앞이면 -1
+str이 abcdd보다 사전순으로 뒤면 1
+str과 abcdd가 마지막 문자만 다르면 마지막 문자의 사전순 차이 반환 (여기선 1)
+*/
+
+Integer.parseInt("300") // 문자열을 숫자로 변환
+Integer.toString(300) // 숫자를 문자열로 변환
+
+
+### StringBuilder
+
+String은 한번 만들어지면 문자를 추가하거나 삭제할 수 없는 변경 불가한 타입
+
+StringBuilder는 변경 가능한 타입이므로 문자열을 변경해야 하는 문제에서는 StringBuilder를 사용한다.
+
+
+StringBuilder sb = new StringBuilder();
+
+sb.append("abc") // 문자열 추가
+sb.insert(2, "kk") // 2위치에 kk 삽입 -> abkkc
+
+sb.delete(0, 2) // 0~1 위치의 문자열 삭제 -> c
+sb.deleteCharAt(2) // 2 위치의 문자 삭제 -> ac
+
+sb.setCharAt(0, 'h') // 0 위치의 문자를 h로 변경 -> hbc
+sb.reverse() // 문자열 거꾸로 뒤집기 -> 츔
+
+sb.setLength(2) // 문자열 길이를 2로 줄임 -> ab
+sb.setLength(4) // 문자열 길이를 4로 늘림 -> 뒤가 공백으로 채워짐
+
+
+
+## 자료구조
+
+### [Arrays]
+
+
+int[] arr1 = {10, 3, 2, 4, 0, 30};
+
+//오름차순 정렬
+Arrays.sort(arr1);
+
+//내림차순 정렬
+Arrays.sort(arr1, Collections.reverseOrder());
+
+//일부만 정렬
+Arrays.sort(arr1, 0, 4);
+
+//오름차순 정렬하면 binarySearch로 특정값을 찾을 수 있다.
+Arrays.binartSearch(arr1, 2);
+
+//배열을 ArrayList로 변환할 때
+List list = Arrays.asList(arr1);
+
+//배열의 특정 범위 자르기
+int tmp[] = Arrays.copyOfRange(arr1, 0, 3);
+
+
+### 배열값 출력, 2차원 이상 배열값 출력
+
+
+//배열값 출력
+//Arrays.toString(arr)
+int[] arr = {1, 2, 3, 4, 5};
+System.out.println(arr.toString());
+
+//2차원 이상 배열값 출력
+//Arrays.deepToString(arr)
+int[][] arr = {{1, 2, 3, 4, 5}, {54, 33, 44, 55, 66, 77}};
+System.out.println(Arrays.deepToString(arr));
+
+
+
+### 배열 자르기
+
+
+//배열 자르기
+//Arrays.copyOfRange(arr, i, j)
+//1. 원본 배열
+int[] arr = {0, 1, 2, 3, 4, 5};
+
+//2. 배열을 자를 index
+int position = 3;
+
+//3. 배열 자르기
+int[] arr1 = Arrays.copyOfRange(arr, 0, position);
+int[] arr2 = Arrays.copyOfRange(arr, position, arr.length);
+
+//4. 자른 배열 출력
+System.out.println(arr1.toString()); // [0, 1, 2]
+System.out.println(arr2.toString()); // [3, 4, 5]
+
+
+### 배열 요소 모두 더하기
+
+
+//배열 요소 모두 더하기
+int arr[] = new int[] {1, 2, 3, 4, 5};
+int sum = Arrays.stream(arr).sum();
+System.out.println("Array sum = " + sum);
+
+
+### 배열 중복 제거
+
+
+//Array 배열 중복 제거하기
+Arrays.stream(A).distinct().toArray()
+
+
+### ArrayList 정렬 방법
+
+
+//ArrayList 정렬 방법
+
+ArrayList<String> list = new ArrayList<>(Arrays.asList("C", "A", "B", "a"));
+System.out.println("원본 : " + list); // [C, A, B, a]
+
+//오름차순 정렬
+Collections.sort(list);
+System.out.println("오름차순 : " + list); // [A, B, C, a]
+
+//내림차순 정렬
+Collections.sort(list, Collections.reverseOrder());
+System.out.println("내림차순 : " list); // [a, C, B, A]
+
+//대소문자 구분없이 오름차순
+Collections.sort(list, String.CASE_INSENSITIVE_ORDER);
+System.out.println("대소문자 구분없이 오름차순 : " + list); // [a, A, B, C]
+
+//대소문자 구분없이 내림차순
+Collections.sort(list, String.Collections.reverseOrder(CASE_INSENSITIVE_ORDER));
+System.out.println("대소문자 구분없이 내림차순 : " + list); // [C, B, a, A]
+
+
+
+### ArrayList 중복 제거
+
+
+List result = intList.stream().distinct().collect(Collections.toList());
+
+ArrayList<Integer> intList = new ArrayList<>();
+intList.add(2);
+intList.add(2);
+intList.add(3);
+intList.add(3);
+intList.add(3);
+intList.add(4);
+
+System.out.println(intList.toString());
+
+List result = intList.stream().distinct().collect(Collectors.toList());
+
+System.out.println(result.toString());
+
+
+### ArrayList.addAll(new ArrayList<>()) - 깊은 복사
+
+
+ArrayList<Integer> arrA = new ArrayList<Integer>();
+ArrayList<Integer> arrB = new ArrayList<Integer>();
+arrA.addAll(arrB);
+
+
+### ArrayList.subList(int fromIdx, int toIdx) - 리스트 자르기
+
+
+ArrayList<Integer> testData = new ArrayList<>();
+for (int data = 0; data < 10; data++) {
+	testData.add(data);
+}
+
+System.out.println(testData);
+System.out.println(testData.subList(1, testData.size() - 1);
+
+//출력 결과
+//[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+//[1, 2, 3, 4, 5, 6, 7, 8]
+
+
+### ArrayList.asList(T…a) - 리스트 값 넣기
+
+
+ArrayList<String> list = new ArrayList<String>(Arrays.asList("A", "B"));
+System.out.println(list);
+
+//출력 결과
+//[A, B]
+
+
+### ArrayList 최대값, 최소값 구하기
+
+
+ArrayList<Integer> list = new ArrayList<>(Arrays.asList(0, 1, 2, 3, 4));
+System.out.println(list); // [0, 1, 2, 3, 4]
+
+//Max
+int max = Collections.max(list);
+System.out.println(max);
+
+//Min
+int min = Collections.min(list);
+System.out.println(min);
+
+
+### [List]
+
+
+List<String> list = new ArrayList<>();
+
+list.add("서울") // list의 가장 뒤에 서울 삽입
+list.add(1, "대전") // 1 위치에 대전 삽입
+list.addAll(list2) // list의 뒤에 list2의 모든 값 삽입
+
+list.get(0) // 0 위치의 값 반환 (서울)
+list.set(0, "대구") // 0위치의 값을 대구로 변경
+
+list.indexOf("대구") // 대구의 첫번째 인덱스 반환
+list.lastIndexOf("대구") // 대구의 마지막 인덱스 반환
+
+list.remove(0); // 0 위치의 값 삭제
+list.remove("대구"); // 첫번째 대구 삭제
+list.removeAll(list2); //list에서 list2에 들어있는 모든 값을 삭제
+list.retainAll(list2); //list에서 list2에 들어있는 값을 제외한 모든 값을 삭제
+list.remove(list.size() - 1); //list의 마지막 값이 리스트에서 제거
+
+list.clear() // 전체 값 삭제
+list.isEmpty() // 길이가 0이면 true, 아니면 false
+list.size() 길이
+
+list.contains("서울") // 서울이 list에 있으면 true, 없으면 false
+list.containsAll(list2) // list에 list2의 모든 값이 포함되어 있으면 true
+
+list.removeIf(k -> k % 2 != 0) // 람다식으로 홀수를 list에서 모두 제거
+
+
+코딩테스트를 프로그래머스에서 본다면 리턴타입이 정해져 있으므로 형변환이 거의 필수적일 것이다. 배열 ← → List 왔다갔다 할 줄 알아야 함!
+
+
+// 문자열 배열을 List로 변환
+String[] temp = "abcde";
+List<String> list = new ArrayList<>(Arrays.asList(temp));
+
+// List를 문자열 배열로 변환
+List<String> list = new ArrayList<>();
+String[] temp = list.toArray(new String[list.size()]);
+
+// 정수 배열을 List로 변환
+int[] temp = {121, 1234, 1412, 23, 12};
+List<Integer> list = new ArrayList<>(Arrays.asList(temp));
+
+// List를 정수 배열로 변환
+List<Integer> list = new ArrayList<>();
+int[] temp = list.stream().mapToInt(i -> i).toArray();
+
+
+### [Collections]
+
+
+int[] arr = {1231, 4123, 412333, 4514};
+
+List<Integer> list = new ArrayList<>(Arrays.asList(arr));
+
+Collections.max(list) // list의 원소 중 가장 큰 값 반환
+Collections.min(list) // list의 원소 중 가장 작은 값 반환
+
+Collections.sort(list) // list 오름차순 정렬
+Collections.sort(list, Collections.reverseOrder()) // list 내림차순 정렬
+
+Collections.reverse(list) // list 역순 정렬
+
+Collections.frequency(list, 23) // list 내의 23의 개수 반환
+
+Collections.binarySearch(list, 44)
+// 최초로 검색된 44의 인덱스 1 반환
+// 없으면 44보다 큰 최초의 위치 2를 찾아서 -1을 곱하고 1을 빼서 반환 (-3)
+
+
+### [ArrayList]
+
+
+//선언
+ArrayList<String> list = new ArrayList<>();
+
+//삽입
+list.add("java"); // {"java"}
+list.add(0, "ju"); // {"ju", "java"} (0번째 인덱스에 삽입)
+
+//수정
+list.set(1, "c++"); // {"ju", "java"}
+
+//삭제
+list.remove(1); // {"ju"}
+
+//값 존재 유무 확인
+list.contains("java"); //false
+list.indexOf("ju"); // 0 - 존재하면 인덱스 리턴
+
+//iterator 사용
+Iterator it = list.iterator();
+
+//인덱스 오름차순 순회
+while (it.hasNext()) {
+	...
+}
+
+//인덱스 내림차순 순회
+while (it.hasPrevious()) {
+	...
+}
+
+//중복없이 값을 넣고 싶을 때
+if (list.indexOf(value) < 0) { // 없으면 -1 리턴
+	list.put(value)
+}
+
+//리스트값 하나씩 가져올 때 (int일 경우)
+for (int i = 0; i < list.size(); i++) {
+	list.get(i).intValue();
+}
+
+
+### [length, length(), size()]
+
+
+* length : 배열의 길이(arr.length)
+* length() : String 관련 오브젝트 (str.length())
+* size() : Collections object (list.size())
+
+//length
+int[] arr = new arr[3];
+System.out.println(arr.length);
+
+//length()
+String str = "java";
+System.out.println(str.length());
+
+//size()
+ArrayList<Integer> list = new ArrayList<>();
+System.out.println(list.size());
+
+
+### [배열]
+
+
+//길이 N만큼의 배열 생성
+int[] arr = new int[N];
+
+//N * M 만큼의 배열 생성
+int[][] arr2 = new int[N][M];
+
+//배열에 데이터 추가
+arr.append()
+
+//배열 길이 확인 : 5
+arr.length
+
+//ArrayList 사용
+List<String> str = new ArrayList<String>();
+str.add("test");
+
+//ArrayList 길이 조회
+str.size()
+
+
+### [HashMap]
+
+
+//선언
+HashMap<String, Integer> hm = new HashMap<>();
+
+//key, value 넣기
+hm.put("java", 0);
+
+//키로 값 가져오기
+hm.get("java");
+
+//사이즈
+hm.size();
+
+//containsKey()로 존재 유무 확인
+if (!hm.containsKey("java")) hm.put("java", 1);
+
+//특정 키가 없으면 값 설정, 있으면 기존 값 가져오는 함수
+hm.put("java", hm.getOrDefault("java", 3);
+
+//keySet() 함수로 맵 순회
+for (String key : hm.keySet()) {
+	hm.get(key);
+}
+
+
+### Iterator
+
+
+//Map의 값을 조회할 때 map명.keySet().iterator()를 사용하여 반복자를 생성한다
+//반복자.hasNext() 메소드로 다음 값이 존재하는지 확인
+//반복자.next() 메소드로 참조값을 가져온다.
+
+Map<String, Integer> map = new HashMap<>();
+Iterator<String> it = map.keySet().iterator();
+
+while (it.hasNext()) {
+	String key = it.next();
+	int value = map.get(key);
+}
+
+
+### Map에 value값으로 Java Collection 넣어주기
+
+
+//Map에 value 값으로 collection을 넣는 방법
+//2차원 배열을 사용하고는 싶은데 배열의 index를 int형이 아닌 String 혹은
+//Char형으로 지정하고 싶을 때 사용
+//ex) map["abc"] = {1, 2, 3, 4, 5}
+
+Map<String, List<Integer>> map = new HashMap<>();
+
+// map이 비어있다면 list를 만들어 넣어준다.
+if (map.containsKey(str) == false) {
+
+	List<Integer> list = new ArrayList<>();
+	list.add(Integer.parseInt(info[4]));
+	map.put(str, list);
+
+} else { // map이 비어있지 않다면 list에 값을 넣어준다.
+	map.get(str).add(Integer.parseInt(info[4]));
+}
+
+
+### stream()으로 HashMap 값에 해당하는 key 값 가져오기
+
+
+import java.util.*;
+
+class Main {
+
+	public static <K, V> K getKey(Map<K, V> map, V value) {
+		return map.entrySet().stream()
+						.filter(entry -> value.equals(entry.getValue()))
+						.findFirst().map(Map.Entry::getKey)
+						.orElse(null);
+	}
+
+	public static void main(String[] args) throws Exception {
+		Map<String, Integer> hashMap = new HashMap<>();
+		hashMap.put("A", 1);
+		hashMap.put("B", 2);
+		hashMap.put("C", 3);
+
+		System.out.println(getKey(hashMap, 2)); // 인쇄물 'B'
+	}
+}
+
+
+### ****HashMap key, value 가져오기 (entrySet)****
+
+
+public static void main(String[] args) throws Exception {
+
+    HashMap<String, String> hs = new HashMap<>();
+
+    hs.put("111", "aaa");
+    hs.put("222", "bbb");
+
+    //방법1
+    Iterator<Map.Entry<String, String>> entries = hs.entrySet().iterator();
+    while (entries.hasNext()) {
+        Map.Entry<String, String> entry = (Map.Entry<String, String>)entries.next();
+        System.out.println("key : " + entry.getKey() + ", value : " + entry.getValue());
+    }
+
+    //방법2
+    for (Map.Entry<String, String> entry : hs.entrySet()) {
+        System.out.println("key : " + entry.getKey() + ", value : " + entry.getValue());
+    }
+
+}
+
+
+### [스택 Stack]
+
+
+//스택 선언
+Stack<Integer> stack = new Stack<>();
+
+//스택에 값 추가
+stack.push(1);
+
+//스택에서 top의 데이터 확인
+stack.peek();
+
+//스택의 top 제거 후 값 반환
+stack.pop();
+
+//스택 비우기
+stack.clear();
+
+//스택이 비어있는지 확인
+stack.empty();
+
+//스택에서 값 찾기
+//값이 있다면 true, 없다면 false 반환
+stack.contains(2);
+
+
+### [큐 Queue]
+
+
+//선언
+Queue<Integer> q = new LinkedList<>(); // linked list로 선언해야 함
+
+//삽입
+q.add(10); // {10}
+q.offer(2); // {10, 2}
+
+//프론트값 반환
+q.peek(); // 10
+
+//삭제
+q.remove();
+q.poll();
+
+//초기화
+q.clear();
+
+//비었는지
+q.isEmpty();
+
+//pair같은 경우는 그냥 구현해서 사용
+static class Node {
+	int y;
+	int x;
+	int dist;
+
+	Node(int y, int x, int dist) {
+		this.y = y;
+		this.x = x;
+		this.dist = dist;
+	}
+}
+
+Queue<Node> queue = new LinkedList<>();
+queue.add(new Node(1, 2, 3));
+Node node = queue.poll();
+
+
+
+Queue<Integer> q = new LinkedList<>(); // linked list로 선언해야함
+
+//큐에 데이터 추가 (큐가 꽉찬 경우 예외 발생)
+q.add(1);
+q.add(2);
+
+//큐에 데이터 추가 (큐가 꽉찬 경우 false 리턴)
+q.offer(1);
+
+//큐에서 삭제 (큐의 첫번째 값 삭제)
+q.remove();
+
+//큐에서 삭제
+q.poll();
+
+//큐 검사 (큐의 첫번째 값 출력)
+q.element();
+
+//큐 검사 (큐의 첫번째 값 출력)
+q.peek();
+
+//큐 초기화
+q.clear();
+
+//큐에 값이 있는지 확인
+//값이 있는 경우 true, 없으면 false 반환
+q.contains(1);
+
+
+|  | 예외 발생 | 값 리턴 |
+| --- | --- | --- |
+| 추가(enqueue) | add(e) | offer(e) |
+| 삭제(dequeue) | remove() | poll() |
+| 검사(peek) | element() | peek() |
+
+### [우선순위 큐]
+
+[https://velog.io/@gillog/Java-Priority-Queue우선-순위-큐](https://velog.io/@gillog/Java-Priority-Queue%EC%9A%B0%EC%84%A0-%EC%88%9C%EC%9C%84-%ED%81%90)
+
+최대 힙은 부모 노드의 키 값이 자식 노드의 키 값보다 항상 큰 힙이며 최소 힙은 아래 그림과 같이 부모 노드의 키 값이 자식 노드의 키 값보다 항상 작은 힙이다.
+
+키 값의 대소 관계는 부모 노드와 자식 노드 간에만 성립하기 때문에 형제 사이에는 대소 관계가 정해지지 않는다.
+
+힙 : [https://iambeginnerdeveloper.tistory.com/152](https://iambeginnerdeveloper.tistory.com/152)
+
+
+PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+//우선순위 큐에 값 추가
+pq.add(1);
+
+//우선순위 큐에서 가장 작은 값 반환
+pq.peek();
+
+//우선순위 큐에서 가장 작은값 삭제
+pq.remove();
+
+//우선순위 큐에서 해당 숫자가 있는지 확인
+pq.contains(2);
+
+//낮은 숫자가 우선 순위인 int 형 우선순위 큐 선언
+PriorityQueue<Integer> priorityQueueLowest = new PriorityQueue<>();
+
+//높은 숫자가 우선 순위인 int 형 우선순위 큐 선언
+PriorityQueue<Integer> priorityQueueHighest = new PriorityQueue<>(Collections.reverseOrder());
+
+
+
+//선언
+//최소힙
+PriorityQueue<Integer> pq = new PrioriryQueue<Integer>();
+
+//최대힙
+PriorityQueue<Integer> pq = new PriorityQueue<Integer>(Collections.reverseOrder());
+
+//삽입
+pq.add(3);
+
+//삭제
+pq.remove();
+
+//root값 추출
+pq.peek();
+
+//pair 사용 시
+public class PQ {
+
+	static class Node {
+		int y;
+		int x;
+
+		Node(int y, int x) {
+			this.y = y;
+			this.x = x;
+		}
+
+		//비교 함수 만들어야 함
+		public int compareTo(Node p) {
+			if (this.y < p.x) {
+				return -1; //오름차순
+			} else if (this.y == p.y) {
+				if (this.x < p.x) {
+					return -1;
+				}
+			}
+			return 1;
+		}
+	}
+
+	public static void main(String[] args) throws IOException {
+
+		PriorityQueue<Node> pq1 = new PriorityQueue<>(Node::compareTo);
+		pq1.add(new Node(1, 2));
+		pq1.add(new Node(1, 1));
+		pq1.add(new Node(2, 3));
+		pq1.add(new Node(2, 1));
+
+		while (!pq1.isEmpty()) {
+			Node node = pq1.peek();
+			System.out.println(node.y + " " + node.x);
+			pq1.remove();
+		}
+	}
+}
+
+
+
+
+// 첫번째 값을 반환하고 제거 비어있다면 null
+priorityQueueLowest.poll();
+
+// 첫번째 값 제거 비어있다면 예외 발생
+priorityQueueLowest.remove();
+
+// 첫번째 값을 반환만 하고 제거 하지는 않는다.
+// 큐가 비어있다면 null을 반환
+priorityQueueLowest.peek();
+
+// 첫번째 값을 반환만 하고 제거 하지는 않는다.
+// 큐가 비어있다면 예외 발생
+priorityQueueLowest.element();
+
+// 초기화
+priorityQueueLowest.clear();
+
+priorityQueue.poll();       // priorityQueue에 첫번째 값을 반환하고 제거 비어있다면 null
+priorityQueue.remove();     // priorityQueue에 첫번째 값 제거
+priorityQueue.clear();      // priorityQueue에 초기화
+
+
+
+public static void main(String[] args) {
+
+    PriorityQueue<Gillog> priorityQueue = new PriorityQueue<>();
+
+    priorityQueue.add(new Gillog(3650, "10년후 글"));
+    priorityQueue.add(new Gillog(31, "한달 후 글"));
+    priorityQueue.add(new Gillog(1, "첫번째 글"));
+    priorityQueue.add(new Gillog(365, "1년후 글"));
+
+    while (!priorityQueue.isEmpty()) {
+        Gillog gilLog = priorityQueue.poll();
+        System.out.println("글 넘버 : " + gilLog.getWriteRowNumber() + " 글 내용 : " + gilLog.getContent());
+    }
+}
+
+
+
+import java.util.PriorityQueue; //import
+
+//int형 priorityQueue 선언 (우선순위가 낮은 숫자 순)
+PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
+
+//int형 priorityQueue 선언 (우선순위가 높은 숫자 순)
+PriorityQueue<Integer> priorityQueue = new PriorityQueue<>(Collections.reverseOrder());
+
+//String형 priorityQueue 선언 (우선순위가 낮은 숫자 순)
+PriorityQueue<String> priorityQueue = new PriorityQueue<>();
+
+//String형 priorityQueue 선언 (우선순위가 높은 숫자 순)
+PriorityQueue<String> priorityQueue = new PriorityQueue<>(Collections.reverseOrder());
+
+
+
+PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();//int형 priorityQueue 선언
+priorityQueue.offer(2);     // priorityQueue에 값 2 추가
+priorityQueue.offer(1);     // priorityQueue에 값 1 추가
+priorityQueue.offer(3);     // priorityQueue에 값 3 추가
+priorityQueue.peek();       // priorityQueue에 첫번째 값 참조 = 1
+
+//Priority Queue에서 우선순위가 가장 높은 값을 참조하고 싶다면 peek()라는 메서드를 사용하면 됩니다. 위의 예시에서는 우선순위가 가장 높은 1이 출력됩니다.
+
+
+### minHeap & maxHeap
+
+
+//PriorityQueue의 minHeap, maxHeap 에 접근할 때, pq명.peek() 메소드를 사용한다.
+
+PriorityQueue<Integer> pq = PriorityQueue<Integer>();
+pq.add(1);
+pq.add(2);
+pq.add(13);
+
+System.out.println(pq.peek()); // 1
+
+PriorityQueue<Integer> pq = PriorityQueue<Integer>(Collections.reverseOrder());
+pq.add(1);
+pq.add(2);
+pq.add(13);
+
+System.out.println(pq.peek()); // 13
+
+
+### [벡터]
+
+
+Vector<Integer> vector = new Vector<Integer>();
+
+//벡터에 값 추가
+vector.add(1);
+
+//1번 인덱스의 원소 출력
+vector.get(1);
+
+//벡터의 크기 확인
+vector.capacity();
+
+//벡터 안의 원소 개수 확인
+vector.size();
+
+
+### [Set]
+
+### Set에 값 넣기
+
+
+//Set에 값을 넣을 때는 set명.add(넣을 값)
+
+Set<String> set = new HashSet<String>();
+set.add("comb");
+
+
+### Set 값 삭제
+
+
+//Set에서 값을 삭제할 때는 set명.remove(삭제할 값)
+Set<String> set = new HashSet<String>();
+set.remove("comb");
+
+
+### Iterator
+
+
+//Set의 값을 조회할 때 set명.iterator()를 사용해 반복자를 생성한다.
+//반복자.hasNext() 메소드로 다음 값이 존재하는지 확인한다.
+//반복자.next() 메소드로 참조값을 가져온다.
+
+Set<String> set = new HashSet<String>();
+
+set.add("1");
+set.add("2");
+set.add("3");
+
+Iterator<String> it = set.iterator();
+while (it.hasNext()) {
+	String a = it.next();
+	System.out.println(a);
+}
+
+//결과
+1
+2
+3
+
+
+### Set의 크기

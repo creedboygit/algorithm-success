@@ -1,0 +1,253 @@
+package a_003_Input_Output_패턴;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class InputOutputPattern {
+
+    public ArrayList<Integer> solution(int n, int[] arr) {
+
+        ArrayList<Integer> answer = new ArrayList<>();
+
+        return answer;
+    }
+
+
+    public int solution(String str, char t) {
+
+        int answer = 0;
+
+        return answer;
+    }
+
+    public static void main(String[] args) throws Exception {
+
+        Scanner sc = new Scanner(System.in);
+
+        // 까먹지 말자
+        sc.close(); // 해제 까먹지 말자
+        // 까먹지 말자
+
+        String input1 = sc.next();
+        char t = sc.next().charAt(0);
+
+        String result = "";
+
+        // StringBuilder로 받을 때
+        StringBuilder sb = new StringBuilder();
+
+        for (int x : t.solution(str, c)) {
+            result = sb.append(x).append(" ").toString();
+        }
+
+        result = result.trim();
+
+        System.out.println(result);
+
+        // 솔루션이 ArrayList일 때
+        for (int x : t.solution(n, arr)) {
+//            System.out.print(x + " ");
+            result = sb.append(x).append(" ").toString();
+        }
+
+
+        // 패턴
+        for (char x : t.solution2(n, a, b).toCharArray()) {
+            System.out.println(x);
+        }
+
+        // 패턴
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        String str = sc.next();
+
+        System.out.println(t.solution(str));
+
+        // 패턴
+        for (int x : t.solution(n)) {
+            System.out.print(x + " ");
+        }
+
+        // 패턴
+        for (String s : strArr) {
+            int answer = check(reverse(s));
+            if (answer != 0) {
+                System.out.print(answer + " ");
+            }
+        }
+
+        // 패턴
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[][] arr = new int[n][n];
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                arr[i][j] = sc.nextInt();
+            }
+        }
+
+        // 패턴
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+
+        int[][] arr = new int[n + 1][6]; // 왜 6이지?
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= 5; j++) {
+                arr[i][j] = sc.nextInt();
+            }
+        }
+
+        // 패턴
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+        }
+
+//        System.out.println(Arrays.toString(a));
+
+        int m = sc.nextInt();
+
+        int[] b = new int[m];
+
+        for (int i = 0; i < m; i++) {
+            b[i] = sc.nextInt();
+        }
+
+//        System.out.println(Arrays.toString(b));
+
+        for (int x : t.solution(n, m, a, b)) {
+            System.out.print(x + " ");
+        }
+
+        // 패턴
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+        }
+
+        int m = sc.nextInt();
+
+        int[] b = new int[m];
+
+        for (int i = 0; i < m; i++) {
+            b[i] = sc.nextInt();
+        }
+
+        for (int x : t.solution(n, m, a, b)) {
+            System.out.print(x + " ");
+        }
+    }
+
+    public int solution(int[][] board, int[] moves) {
+
+        int answer = 0;
+        Stack<Integer> stack = new Stack<>();
+
+        for (int pos : moves) {
+
+//            System.out.println("pos = " + pos);
+
+            for (int i = 0; i < board.length; i++) { // 행 길이만큼 한행 한행 아래로 내려간다.
+                if (board[i][pos - 1] != 0) { // pos - 1 해주는거 까먹지 말자
+                    int tmp = board[i][pos - 1];
+//                    System.out.println("tmp = " + tmp);
+                    board[i][pos - 1] = 0;
+
+                    if (!stack.isEmpty() && tmp == stack.peek()) { // stack.isEmpty() 체크 까먹지 말자
+                        answer += 2; // 2개를 터뜨리므로 2개 더해준다
+                        stack.pop();
+//                        System.out.println("pop = " + stack.pop());
+                    } else {
+                        stack.push(tmp);
+                    }
+                    break; // 꼭 다음으로 넘어가기 위해 break
+                }
+            }
+        }
+
+        return answer;
+    }
+
+    public static void main(String[] args) throws Exception {
+
+        Main t = new Main();
+
+//        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//        String str = br.readLine();
+
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+
+        int[][] board = new int[n][n];
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                board[i][j] = sc.nextInt();
+            }
+        }
+
+        int m = sc.nextInt();
+        int[] moves = new int[m];
+        for (int i = 0; i < m; i++) {
+            moves[i] = sc.nextInt();
+        }
+
+        System.out.println(t.solution(board, moves));
+    }
+
+
+
+    public ArrayList<Integer> solution(int n, int[] arr) {
+
+        ArrayList<Integer> answer = new ArrayList<>();
+
+        int[] tmp = arr.clone();
+        Arrays.sort(tmp);
+
+        for (int i = 0; i < n; i++) {
+            if (arr[i] != tmp[i]) answer.add(i + 1); // i + 1을 해주는거 까먹지 말자
+        }
+
+        return answer;
+    }
+
+    public static void main(String[] args) throws Exception {
+
+        Main t = new Main();
+
+//        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//        String str = br.readLine();
+
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        for (Integer x : t.solution(n, arr)) {
+            System.out.print(x + " ");
+        }
+    }
+}
+
+class Point implements Comparable<Point> {
+
+    public int x;
+    public int y;
+
+    Point(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    @Override
+    public int compareTo(Point o) {
+        return 0;
+    }
+}
