@@ -22,6 +22,30 @@ import java.util.Scanner;
 2
 3
 
+---------
+1 5 10
+
+2
+4
+맞나?? (최대는 맞는거 같은데 최소는 어떻게 해결해야 하나?)
+
+-------------
+1 7 8
+
+2
+5
+맞나?? (최대는 맞는거 같은데 최소는 어떻게 해결해야 하나?)
+
+----------------------
+2 5 10
+
+2
+4
+맞나?? (최대는 맞는거 같은데 최소는 어떻게 해결해야 하나?)
+
+-------------
+
+
 풀이 힌트
 https://plplim.tistory.com/45
 
@@ -31,7 +55,11 @@ https://plplim.tistory.com/45
 
 public class Main {
 
-    private static int findFixPosition(int left, int middle, int right) {
+    private static int findFixPosition_min(int left, int middle, int right) {
+        return right - middle > middle - left ? left : right;
+    }
+
+    private static int findFixPosition_max(int left, int middle, int right) {
         return right - middle > middle - left ? right : left;
     }
 
@@ -50,10 +78,20 @@ public class Main {
 //            middle = middle + 1;
 //        }
 
-        int fixPosition = findFixPosition(left, middle, right);
+        int fixPosition_min = findFixPosition_min(left, middle, right);
+        int fixPosition_max = findFixPosition_max(left, middle, right);
 
-        answer[0] = Math.abs(fixPosition - middle) - 2;
-        answer[1] = Math.abs(fixPosition - middle) - 1;
+        int a = Math.abs(middle - fixPosition_min);
+
+        if (a == 2) {
+            answer[0] = 1;
+        } else if (a == 1 || a >= 3) {
+            answer[0] = 2;
+        }
+
+
+//        answer[0] = Math.abs(fixPosition - middle) - 2; // 최소값 틀렸음
+        answer[1] = Math.abs(fixPosition_max - middle) - 1;
 
         return answer;
     }
