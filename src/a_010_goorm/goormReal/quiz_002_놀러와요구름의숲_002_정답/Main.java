@@ -1,4 +1,4 @@
-package a_010_goorm.goormReal.quiz_002_놀러와요구름의숲_002;
+package a_010_goorm.goormReal.quiz_002_놀러와요구름의숲_002_정답;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -45,6 +45,9 @@ R........M
 
 위 답 : 7
 
+[https://www.youtube.com/watch?v=yQ7o1Y7X_Rg](https://www.youtube.com/watch?v=yQ7o1Y7X_Rg)
+
+ezsw 유튜브에서 힌트 얻음 (거의 답이었음)
 */
 
 public class Main {

@@ -2,6 +2,11 @@ package a_010_goorm.goormReal.quiz_001_코딩과제;
 
 import java.util.*;
 
+/*
+long형!
+코딩테스트 오픈카톡방에서 힌트 얻음
+ */
+
 public class Main {
 
     public int solution(int n, int[] arr) {
