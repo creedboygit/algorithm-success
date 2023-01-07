@@ -25,7 +25,7 @@ public class Main {
 //
 //    public static void main(String[] args) throws Exception {
 //
-//        Main T = new Main();
+//        Main9 T = new Main9();
 //        int n = 45;
 //        for (int i = 1; i <= n; i++) {
 //            System.out.print(T.DFS(i) + " ");

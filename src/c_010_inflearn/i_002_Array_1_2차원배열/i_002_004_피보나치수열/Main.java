@@ -51,7 +51,7 @@ i_002_004_피보나치수열
 //
 //    public static void main(String[] args) throws Exception {
 //
-//        Main t = new Main();
+//        Main9 t = new Main9();
 //
 ////        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 ////        String str = br.readLine();

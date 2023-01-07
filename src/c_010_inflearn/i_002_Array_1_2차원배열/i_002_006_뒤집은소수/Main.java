@@ -84,7 +84,7 @@ N개의 자연수가 입력되면 각 자연수를 뒤집은 후 그 뒤집은 �
 //
 //    public static void main(String[] args) throws Exception {
 //
-//        Main t = new Main();
+//        Main9 t = new Main9();
 //
 ////        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 ////        String str = br.readLine();

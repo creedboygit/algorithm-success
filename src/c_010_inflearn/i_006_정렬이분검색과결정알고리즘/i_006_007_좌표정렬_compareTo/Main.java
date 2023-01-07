@@ -45,7 +45,7 @@ N개의 좌표를 정렬하여 출력하세요.
 */
     public static void main(String[] args) throws Exception {
 
-//        Main t = new Main();
+//        Main9 t = new Main9();
 
 //        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 //        String str = br.readLine();

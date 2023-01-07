@@ -54,7 +54,7 @@ i_002_002_보이는학생수
 
 //    public static void main(String[] args) throws Exception {
 //
-//        Main t = new Main();
+//        Main9 t = new Main9();
 //
 //        Scanner sc = new Scanner(System.in);
 //

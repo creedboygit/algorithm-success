@@ -1,4 +1,4 @@
-package a_010_goorm.goormReal.quiz_004_슈퍼로봇대전_002_풀기_정답인것같음;
+package a_010_goorm.goormReal.quiz_004_슈퍼로봇대전_002_풀기_정답;
 
 import java.util.*;
 
@@ -14,6 +14,8 @@ import java.util.*;
 23.01.06 - 구글링 : “프로그래머스 순위” 로 검색하니깐 나왔다
 
 [https://www.google.co.kr/search?q=프로그래머스+순위](https://www.google.co.kr/search?q=%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4+%EC%88%9C%EC%9C%84)
+
+https://www.acmicpc.net/problem/2458
  */
 
 /*
@@ -50,7 +52,7 @@ import java.util.*;
 2
  */
 
-public class Main {
+public class Main9 {
 
     public int solution(int n, int[][] results) {
 
@@ -67,6 +69,7 @@ public class Main {
         for (int[] i : results) {
             int a = i[0];
             int b = i[1];
+
             win.get(a).add(b);
             lose.get(b).add(a);
         }
@@ -109,7 +112,7 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        Main t = new Main();
+        Main9 t = new Main9();
 
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
