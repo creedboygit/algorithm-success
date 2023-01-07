@@ -1,4 +1,4 @@
-package a_010_goorm.goormReal.quiz_003_펭귄은추워요_002_풀기;
+package a_010_goorm.goormReal.quiz_003_펭귄은추워요_002_풀기_정답;
 
 import java.util.Scanner;
 
@@ -55,18 +55,21 @@ https://plplim.tistory.com/45
 
 public class Main {
 
+    // 최소값 구하기 위한 고정점 찾기
     private static int findFixPosition_min(int left, int middle, int right) {
         return right - middle > middle - left ? left : right;
     }
 
+    // 최대값 구하기 위한 고정점 찾기
     private static int findFixPosition_max(int left, int middle, int right) {
         return right - middle > middle - left ? right : left;
     }
 
     public int[] solution(int left, int middle, int right) {
 
-        int[] answer = new int[2];
+        int[] answer = new int[2]; // 최소값, 최대값 구하기 위한 초기화
 
+        // 연속된 숫자면 0, 0 반환
         if (middle - left == 1 && right - middle == 1) {
             answer[0] = 0;
             answer[1] = 0;
@@ -74,42 +77,29 @@ public class Main {
             return answer;
         };
 
-//        if (middle - left == 1 || right - middle == 1) {
-//            middle = middle + 1;
-//        }
-
         int fixPosition_min = findFixPosition_min(left, middle, right);
         int fixPosition_max = findFixPosition_max(left, middle, right);
 
+        // 최소값 구하기
         int a = Math.abs(middle - fixPosition_min);
 
+        // 최소값 구하기
         if (a == 2) {
             answer[0] = 1;
         } else if (a == 1 || a >= 3) {
             answer[0] = 2;
         }
 
-
-//        answer[0] = Math.abs(fixPosition - middle) - 2; // 최소값 틀렸음
+        // 최대값 구하기
         answer[1] = Math.abs(fixPosition_max - middle) - 1;
 
         return answer;
     }
 
-//    public void dfs(int n, int m, int k) {
-//
-//        if (n == ) {
-//
-//        }
-//
-//    }
 
     public static void main(String[] args) throws Exception {
 
         Main t = new Main();
-
-//        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-//        String str = br.readLine();
 
         Scanner sc = new Scanner(System.in);
         int left = sc.nextInt();
