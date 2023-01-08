@@ -1,10 +1,6 @@
 package a_010_goorm.goormReal.quiz_004_슈퍼로봇대전_002_풀기_정답;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 /*
 똑같은 문제 발견
@@ -57,53 +53,77 @@ https://www.acmicpc.net/problem/2458
 
 //자세한 설명 : https://nahwasa.com/85
 
-// 아래 풀이 방법 : https://suhyeokeee.tistory.com/184
+//아래 풀이 방법 : https://maetdori.tistory.com/entry/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%EC%88%9C%EC%9C%84-JAVA
+//BFS 이용
 
-public class Main5_정답_플로이드워셜_DP {
+
+class Node {
+    int win;
+    int defeat;
+}
+
+public class Main6_정답_BFS {
+
+    static List<Integer>[] adj;
+    static Node[] nodes;
+    static int N;
 
     // 플로이드워셜 이용
     public int solution(int n, int[][] results) {
 
-        int answer = n;
-        int INF = n * n;
-        int[][] graph = new int[n][n];
+        adj = new ArrayList[n + 1];
+        nodes = new Node[n + 1];
+        N = n;
 
-        for (int i = 0; i < n; i++) {
-            Arrays.fill(graph[i], INF);
-            graph[i][i] = 0; // 본인은 무시하기 위해 0으로
+        for (int i = 0; i < N + 1; i++) {
+            adj[i] = new ArrayList<>();
+            nodes[i] = new Node();
         }
 
-        for (int[] result : results) {
-            graph[result[0] - 1][result[1] - 1] = 1;
+        for (int i = 0; i < results.length; i++) {
+            int winner = results[i][0];
+            int loser = results[i][1];
+
+            adj[winner].add(loser);
         }
 
-        for (int k = 0; k < n; k++) {
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < n; j++) {
-                    graph[i][j] = Math.min(graph[i][j], graph[i][k] + graph[k][j]);
+        nodeUpdate();
+        return hasRank();
+    }
+
+    private void nodeUpdate() {
+        for (int i = 1; i < N + 1; i++) {
+            Queue<Integer> queue = new LinkedList<>();
+            boolean[] visited = new boolean[N + 1];
+
+            visited[i] = true;
+            queue.offer(i);
+
+            while (!queue.isEmpty()) {
+                int winner = queue.poll();
+
+                for (int loser : adj[winner]) {
+                    if (visited[loser]) continue;
+                    visited[loser] = true;
+                    queue.offer(loser);
+                    nodes[i].win++;
+                    nodes[loser].defeat++;
                 }
             }
         }
+    }
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                if (i == j) { // 본인끼리는 걍 스킵
-                    continue;
-                }
-
-                if (graph[i][j] == INF && graph[j][i] == INF) {
-                    answer--;
-                    break;
-                }
-            }
+    private int hasRank() {
+        int count = 0;
+        for (Node node : nodes) {
+            if (node.win + node.defeat == N - 1) count++;
         }
-
-        return answer;
+        return count;
     }
 
     public static void main(String[] args) throws Exception {
 
-        Main5_정답_플로이드워셜_DP t = new Main5_정답_플로이드워셜_DP();
+        Main6_정답_BFS t = new Main6_정답_BFS();
 
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
@@ -128,10 +148,5 @@ public class Main5_정답_플로이드워셜_DP {
 //        System.out.println(Arrays.deepToString(arr));
 
         System.out.println(t.solution(n, arr));
-    }
-
-    @Test
-    public void test() {
-        Assertions.assertEquals(2, solution(5, new int[][]{{4, 3}, {4, 2}, {3, 2}, {1, 2}, {2, 5}}));
     }
 }
