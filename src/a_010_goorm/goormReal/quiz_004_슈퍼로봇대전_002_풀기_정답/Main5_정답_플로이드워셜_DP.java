@@ -54,41 +54,45 @@ https://www.acmicpc.net/problem/2458
 
 //자세한 설명 : https://nahwasa.com/85
 
-public class Main2_정답 {
+// 아래 풀이 방법 : https://suhyeokeee.tistory.com/184
+
+public class Main5_정답_플로이드워셜_DP {
 
     // 플로이드워셜 이용
     public int solution(int n, int[][] results) {
 
-        int answer = 0;
-        int[][] graph = new int[n + 1][n + 1];
+        int answer = n;
+        int INF = n * n;
+        int[][] graph = new int[n][n];
 
-//        System.out.println(Arrays.deepToString(results));
-//        System.out.println(Arrays.deepToString(graph));
+        for (int i = 0; i < n; i++) {
+            Arrays.fill(graph[i], INF);
+            graph[i][i] = 0;
+        }
 
-        for (int i = 0; i < results.length; i++)
-            graph[results[i][0]][results[i][1]] = 1; // 이김
+        for (int[] result : results) {
+            graph[result[0] - 1][result[1] - 1] = 1;
+        }
 
-        for (int i = 0; i <= n; i++) {
-            for (int j = 0; j <= n; j++) {
-                for (int z = 0; z <= n; z++) {
-                    if (graph[j][i] == 1 && graph[i][z] == 1)
-                        graph[j][z] = 1;
+        for (int k = 0; k < n; k++) {
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    graph[i][j] = Math.min(graph[i][j], graph[i][k] + graph[k][j]);
                 }
             }
         }
 
-//        System.out.println(Arrays.deepToString(graph));
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (i == j) {
+                    continue;
+                }
 
-        for (int i = 1; i <= n; i++) {
-
-            int game = 0;
-            for (int j = 1; j <= n; j++) {
-                if (graph[i][j] == 1 || graph[j][i] == 1) // 자신이 이겼거나 자신을 이겼거나
-                    game++;
+                if (graph[i][j] == INF && graph[j][i] == INF) {
+                    answer--;
+                    break;
+                }
             }
-
-            if (game == n - 1) // 자신을 제외한 이기고 진 게임이 꽉 찼다면 순위가 확정된 사람
-                answer++;
         }
 
         return answer;
@@ -96,7 +100,7 @@ public class Main2_정답 {
 
     public static void main(String[] args) throws Exception {
 
-        Main2_정답 t = new Main2_정답();
+        Main5_정답_플로이드워셜_DP t = new Main5_정답_플로이드워셜_DP();
 
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
