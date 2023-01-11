@@ -2,10 +2,9 @@ package e_010_codeup100;
 
 import java.util.Scanner;
 
-//1 3
-//4 2
+//1 2 3
 
-public class c_1042 {
+public class c_1046 {
 
     public static void main(String[] args) throws Exception {
 
@@ -13,10 +12,10 @@ public class c_1042 {
 
         long n = sc.nextLong();
         long m = sc.nextLong();
+        long c = sc.nextLong();
 
-        long a = n / m;
-
-        System.out.print(a);
+        System.out.println(n + m + c);
+        System.out.printf("%.1f", (double)(n + m + c) / 3);
 
         sc.close();
     }

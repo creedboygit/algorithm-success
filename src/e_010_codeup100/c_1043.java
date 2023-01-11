@@ -2,19 +2,19 @@ package e_010_codeup100;
 
 import java.util.Scanner;
 
-//1 3
+//10 3
 //4 2
 
-public class c_1042 {
+public class c_1043 {
 
     public static void main(String[] args) throws Exception {
 
         Scanner sc = new Scanner(System.in);
 
-        long n = sc.nextLong();
-        long m = sc.nextLong();
+        int n = sc.nextInt();
+        int m = sc.nextInt();
 
-        long a = n / m;
+        int a = n % m;
 
         System.out.print(a);
 

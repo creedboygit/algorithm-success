@@ -2,21 +2,17 @@ package e_010_codeup100;
 
 import java.util.Scanner;
 
-//1 3
-//4 2
+//2147483647
 
-public class c_1042 {
+public class c_1044 {
 
     public static void main(String[] args) throws Exception {
 
         Scanner sc = new Scanner(System.in);
 
         long n = sc.nextLong();
-        long m = sc.nextLong();
 
-        long a = n / m;
-
-        System.out.print(a);
+        System.out.print(++n);
 
         sc.close();
     }
