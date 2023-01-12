@@ -21,6 +21,6 @@ public class c_1068 {
         else if(a >= 0 && a <= 39)
             System.out.println("D");
 
-        sc.close();
+        sc.close();1
     }
 }
