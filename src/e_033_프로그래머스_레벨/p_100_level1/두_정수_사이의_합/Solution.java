@@ -1,4 +1,4 @@
-package e_030_프로그래머스_레벨.p_100_level1.두_정수_사이의_합;
+package e_033_프로그래머스_레벨.p_100_level1.두_정수_사이의_합;
 
 class Solution {
     boolean solution(String s) {
