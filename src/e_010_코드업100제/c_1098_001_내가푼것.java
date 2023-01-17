@@ -34,13 +34,11 @@ public class c_1098_001_내가푼것 {
             int x = sc.nextInt();
             int y = sc.nextInt();
 
-//            arr[x][y] = 1;
-
             for (int l = 0; l < len; l++) {
                 if (direction == 0) {
-                    arr[x][y + l] = 1;
+                    arr[x][y + l] = 1; // 열을 늘려야 한다
                 } else {
-                    arr[x + l][y] = 1;
+                    arr[x + l][y] = 1; // 행을 늘려야 한다
                 }
             }
         }
@@ -53,7 +51,5 @@ public class c_1098_001_내가푼것 {
 
             System.out.println();
         }
-
-
     }
 }
