@@ -3,28 +3,28 @@ package e_010_코드업100제;
 import java.util.Scanner;
 
 /*
-55
+57
+10
  */
 
-public class c_1080_02 {
+public class c_1087_002 {
 
     public static void main(String[] args) throws Exception {
 
         Scanner sc = new Scanner(System.in);
 
-        int n = sc.nextInt();
+        int h = sc.nextInt();
+
         int sum = 0;
 
-        for (int i = 1; i <= n; i++) {
+        for (int i = 1; i <= h; i++) {
 
             sum += i;
 
-            if (sum >= n) {
-                System.out.println(i);
+            if (sum >= h) {
+                System.out.println(sum);
                 break;
             }
         }
-
-        sc.close();
     }
 }

@@ -11,7 +11,7 @@ import java.util.StringTokenizer;
 1 2 3
  */
 
-public class c_1084_03_BufferedWriter {
+public class c_1084_003_BufferedWriter {
 
     public static void main(String[] args) throws Exception {
 

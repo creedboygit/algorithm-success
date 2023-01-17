@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 //000907-1121112
 
-public class c_1020_02 {
+public class c_1020_002 {
 
     public static void main(String[] args) throws Exception {
 

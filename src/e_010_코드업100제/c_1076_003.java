@@ -3,21 +3,22 @@ package e_010_코드업100제;
 import java.util.Scanner;
 
 /*
-4
+f
  */
 
-public class c_1077_02 {
+public class c_1076_003 {
 
     public static void main(String[] args) throws Exception {
 
         Scanner sc = new Scanner(System.in);
 
-        int n = sc.nextInt();
-        int a = 0;
+        char input = sc.nextLine().charAt(0);
+
+        char c = 'a';
 
         do {
-            System.out.println(a++);
-        } while (a <= n);
+            System.out.println(c++ + "");
+        } while (c <= input);
 
         sc.close();
     }

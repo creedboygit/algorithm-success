@@ -2,7 +2,7 @@ package e_010_코드업100제;
 
 import java.util.Scanner;
 
-public class c_1014_02 {
+public class c_1014_002 {
 
     public static void main(String[] args) throws Exception {
 

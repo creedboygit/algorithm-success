@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 //3 -1 5
 
-public class c_1064_02 {
+public class c_1064_002 {
 
     public static void main(String[] args) throws Exception {
 

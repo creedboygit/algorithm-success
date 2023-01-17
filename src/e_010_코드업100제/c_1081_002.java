@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
 2 3
  */
 
-public class c_1081_02 {
+public class c_1081_002 {
 
     public static void main(String[] args) throws Exception {
 

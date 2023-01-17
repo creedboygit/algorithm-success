@@ -2,23 +2,17 @@ package e_010_코드업100제;
 
 import java.util.Scanner;
 
-/*
-x b k d l q g a c
- */
+//3:16
 
-public class c_1079_02 {
+public class c_1018_002 {
 
     public static void main(String[] args) throws Exception {
 
         Scanner sc = new Scanner(System.in);
 
-        while (true) {
+        String s = sc.nextLine();
 
-            char c = sc.next().charAt(0);
-
-            System.out.println(c);
-            if (c == 'q') break;
-        }
+        System.out.printf(s);
 
         sc.close();
     }

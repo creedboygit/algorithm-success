@@ -7,7 +7,7 @@ import java.util.Scanner;
 1 3 2 2 5 6 7 4 5 9
  */
 
-public class c_1093_02 {
+public class c_1093_002 {
 
     public static void main(String[] args) throws Exception {
 

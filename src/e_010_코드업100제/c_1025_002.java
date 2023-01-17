@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 //75254
 
-public class c_1025_02 {
+public class c_1025_002 {
 
     public static void main(String[] args) throws Exception {
 

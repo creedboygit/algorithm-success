@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class c_1014_03 {
+public class c_1014_003 {
 
     public static void main(String[] args) throws Exception {
         

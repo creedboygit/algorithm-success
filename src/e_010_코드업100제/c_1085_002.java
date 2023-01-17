@@ -3,10 +3,10 @@ package e_010_코드업100제;
 import java.util.Scanner;
 
 /*
-1024 768 24
+44100 16 2 10
  */
 
-public class c_1086_02 {
+public class c_1085_002 {
 
     public static void main(String[] args) throws Exception {
 
@@ -15,12 +15,14 @@ public class c_1086_02 {
         double h = sc.nextDouble();
         double b = sc.nextDouble();
         double c = sc.nextDouble();
+        double s = sc.nextDouble();
 
         double answer = 1;
+        answer = h * b * c * s;
+        answer /= 8;
+        answer /= 1024;
+        answer /= 1024;
 
-        answer = (h * b * c) / 8 / 1024 / 1024;
-
-        String answer2 = String.format("%.2f MB", answer);
-        System.out.print(answer2);
+        System.out.printf("%.1f MB", answer);
     }
 }

@@ -2,21 +2,18 @@ package e_010_코드업100제;
 
 import java.util.Scanner;
 
-/*
-B
- */
+//13
 
-public class c_1082_02 {
+public class c_1034_002 {
 
     public static void main(String[] args) throws Exception {
 
         Scanner sc = new Scanner(System.in);
 
-        int x = sc.nextInt(16);
+        int n = sc.nextInt(8);
 
-        for (int i = 1; i < 16; i++) {
-            System.out.printf("%X*%X=%X\n", x, i, x * i);
-        }
+        System.out.print(n);
 
+        sc.close();
     }
 }

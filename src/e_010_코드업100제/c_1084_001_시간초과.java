@@ -7,7 +7,7 @@ import java.util.Scanner;
 1 2 3
  */
 
-public class c_1084_01_시간초과 {
+public class c_1084_001_시간초과 {
 
     public static void main(String[] args) throws Exception {
 

@@ -2,9 +2,9 @@ package e_010_코드업100제;
 
 import java.util.Scanner;
 
-//7 4 2 3 0 1 5 6 9 10 8
+//1 2 8
 
-public class c_1071_02 {
+public class c_1066_002 {
 
     public static void main(String[] args) throws Exception {
 
@@ -13,11 +13,13 @@ public class c_1071_02 {
         String[] arr = sc.nextLine().split(" ");
 
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i].equals("0")) {
-                break;
-            } else {
-                System.out.println(arr[i]);
-            }
+
+            int c = Integer.parseInt(arr[i]);
+
+            if (c % 2 == 0)
+                System.out.println("even");
+            else
+                System.out.println("odd");
         }
 
         sc.close();

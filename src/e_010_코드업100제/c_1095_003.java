@@ -1,6 +1,5 @@
 package e_010_코드업100제;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 /*
@@ -8,7 +7,7 @@ import java.util.Scanner;
 10 4 2 3 6 6 7 9 8 5 1
  */
 
-public class c_1095_03 {
+public class c_1095_003 {
 
     public static void main(String[] args) throws Exception {
 
