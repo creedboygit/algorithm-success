@@ -1,4 +1,4 @@
-package e_031_프로그래머스_고득점킷.g_018_DFS_BFS.네트워크;
+package e_031_프로그래머스_고득점킷.g_018_DFS_BFS.네트워크_DFS;
 
 import java.util.*;
 
@@ -17,9 +17,6 @@ import java.util.*;
 public class Solution {
 
     boolean[] visited;
-    static int n;
-    static int answer;
-//    static int[][] computers;
 
     public void dfs(int node, int[][] computers) { // 모든 컴퓨터를 돌면서 방문
         visited[node] = true;
@@ -58,7 +55,7 @@ public class Solution {
 
         Scanner sc = new Scanner(System.in);
 
-        n = sc.nextInt();
+        int n = sc.nextInt();
 
         int[][] computers = new int[n][n];
 
