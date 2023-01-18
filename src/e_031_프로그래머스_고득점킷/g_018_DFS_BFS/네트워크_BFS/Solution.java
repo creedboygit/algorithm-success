@@ -54,8 +54,8 @@ public class Solution {
         }
 
         for (int i = 0; i < computers.length; i++) {
-            if (!visited[i]) { // 방문하지 않은 컴퓨터가 있다면
 
+            if (!visited[i]) { // 방문하지 않은 컴퓨터가 있다면
                 bfs(i, computers); // 방문하러 가기
                 answer++; // 연결되지 않은 네트워크가 존재한다는 것이므로 +1 (bfs를 몇 번 돌았느냐가 답)
             }
