@@ -1,8 +1,8 @@
 package e_031_프로그래머스_고득점킷.g_018_DFS_BFS.네트워크_DFS;
 
-import java.util.*;
-
 /*
+https://school.programmers.co.kr/learn/courses/30/lessons/43162
+
 3	[[1, 1, 0], [1, 1, 0], [0, 0, 1]]
 
 3
@@ -13,6 +13,8 @@ import java.util.*;
 답
 2
  */
+
+import java.util.*;
 
 public class Solution {
 

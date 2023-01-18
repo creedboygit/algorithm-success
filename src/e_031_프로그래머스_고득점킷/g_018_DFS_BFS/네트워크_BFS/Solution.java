@@ -1,10 +1,8 @@
 package e_031_프로그래머스_고득점킷.g_018_DFS_BFS.네트워크_BFS;
 
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Scanner;
-
 /*
+https://school.programmers.co.kr/learn/courses/30/lessons/43162
+
 3	[[1, 1, 0], [1, 1, 0], [0, 0, 1]]
 
 3
@@ -15,6 +13,10 @@ import java.util.Scanner;
 답
 2
  */
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
 
 public class Solution {
 
