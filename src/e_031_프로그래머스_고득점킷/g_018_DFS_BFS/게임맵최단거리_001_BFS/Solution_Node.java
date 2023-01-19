@@ -18,20 +18,20 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-class Node {
-
-    int x;
-    int y;
-    int cost;
-
-    public Node(int x, int y, int cost) {
-        this.x = x;
-        this.y = y;
-        this.cost = cost;
-    }
-}
-
 public class Solution_Node {
+
+    static class Node { // static class로 선언해줘야 한다.
+
+        int x;
+        int y;
+        int cost;
+
+        public Node(int x, int y, int cost) {
+            this.x = x;
+            this.y = y;
+            this.cost = cost;
+        }
+    }
 
     static boolean[][] visited;
     static int[] dx = {-1, 0, 1, 0};
@@ -41,20 +41,22 @@ public class Solution_Node {
 
     static int bfs(int x, int y, int[][] map) {
 
-        Queue<int[]> queue = new LinkedList<>();
+        Queue<Node> queue = new LinkedList<>();
 
-        queue.add(new int[]{x, y});
+        queue.offer(new Node(x, y, 1));
         visited[x][y] = true;
 
         while (!queue.isEmpty()) {
 
-            int[] now = queue.poll();
+            Node now = queue.poll();
+
+            if (now.x == map.length - 1 && now.y == map[0].length - 1) return now.cost;
 
             // 상하좌우 탐색
             for (int i = 0; i < 4; i++) {
 
-                int nx = now[0] + dx[i]; // 이동했을 때 위치
-                int ny = now[1] + dy[i]; // 이동했을 때 위치
+                int nx = now.x + dx[i]; // 이동했을 때 위치
+                int ny = now.y + dy[i]; // 이동했을 때 위치
 
                 // 범위를 벗어나면 continue
                 if (nx < 0 || ny < 0 || nx >= n || ny >= m) { // && 아니다 || 이다 주의!!!
@@ -64,17 +66,12 @@ public class Solution_Node {
                 // 갈 수 있는 길이면
                 if (!visited[nx][ny] && map[nx][ny] == 1) {
                     visited[nx][ny] = true; // 방문 체크
-                    queue.add(new int[]{nx, ny}); // 큐에 넣기
-                    map[nx][ny] = map[now[0]][now[1]] + 1;
+                    queue.offer(new Node(nx, ny, now.cost + 1)); // 큐에 넣기
                 }
             }
         }
 
-        if (visited[n - 1][m - 1]) {
-            return map[n - 1][m - 1];
-        } else {
-            return -1;
-        }
+        return -1;
     }
 
     public int solution(int[][] map) {
