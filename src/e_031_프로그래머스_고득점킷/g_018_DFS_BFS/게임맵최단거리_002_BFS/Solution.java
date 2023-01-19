@@ -1,4 +1,4 @@
-package e_031_프로그래머스_고득점킷.g_018_DFS_BFS.게임맵최단거리_BFS;
+package e_031_프로그래머스_고득점킷.g_018_DFS_BFS.게임맵최단거리_002_BFS;
 
 /*
 https://school.programmers.co.kr/learn/courses/30/lessons/1844
@@ -39,8 +39,8 @@ public class Solution {
 
             for (int i = 0; i < 4; i++) {
 
-                int nx = temp[0] + dx[i];
-                int ny = temp[1] + dy[i];
+                int nx = temp[0] + dx[i]; // 이동했을 때 위치
+                int ny = temp[1] + dy[i]; // 이동했을 때 위치
 
                 // 범위를 벗어나면 continue
                 if (nx < 0 || ny < 0 || nx >= n || ny >= m) { // && 아니다 || 이다 주의!!!
@@ -49,8 +49,8 @@ public class Solution {
 
                 // 갈 수 있는 길이면
                 if (!visited[nx][ny] && map[nx][ny] == 1) {
-                    visited[nx][ny] = true;
-                    queue.add(new int[]{nx, ny});
+                    visited[nx][ny] = true; // 방문 체크
+                    queue.add(new int[]{nx, ny}); // 큐에 넣기
                     map[nx][ny] = map[temp[0]][temp[1]] + 1;
                 }
             }
