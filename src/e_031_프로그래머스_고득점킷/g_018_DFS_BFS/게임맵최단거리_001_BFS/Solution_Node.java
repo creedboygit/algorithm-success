@@ -1,4 +1,4 @@
-package e_031_프로그래머스_고득점킷.g_018_DFS_BFS.게임맵최단거리_002_BFS;
+package e_031_프로그래머스_고득점킷.g_018_DFS_BFS.게임맵최단거리_001_BFS;
 
 /*
 https://school.programmers.co.kr/learn/courses/30/lessons/1844
@@ -18,50 +18,62 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-public class Solution {
+class Node {
 
-    static int[][] visited;
+    int x;
+    int y;
+    int cost;
+
+    public Node(int x, int y, int cost) {
+        this.x = x;
+        this.y = y;
+        this.cost = cost;
+    }
+}
+
+public class Solution_Node {
+
+    static boolean[][] visited;
     static int[] dx = {-1, 0, 1, 0};
     static int[] dy = {0, -1, 0, 1};
 
     static int n, m;
 
-    static void bfs(int[][] map) {
+    static int bfs(int x, int y, int[][] map) {
 
         Queue<int[]> queue = new LinkedList<>();
 
-        queue.add(new int[]{0, 0});
+        queue.add(new int[]{x, y});
+        visited[x][y] = true;
 
         while (!queue.isEmpty()) {
 
             int[] now = queue.poll();
 
-            int x = now[0];
-            int y = now[1];
-
             // 상하좌우 탐색
             for (int i = 0; i < 4; i++) {
 
-                int nx = x + dx[i]; // 이동했을 때 위치
-                int ny = y + dy[i]; // 이동했을 때 위치
+                int nx = now[0] + dx[i]; // 이동했을 때 위치
+                int ny = now[1] + dy[i]; // 이동했을 때 위치
 
-//                if (nx < 0 || nx >= map.length) continue;
-//                if (ny < 0 || ny >= map[0].length) continue;
-//
-//                if (visited[nx][ny] != 0) continue;
-//                if (map[nx][ny] != 1) continue;
+                // 범위를 벗어나면 continue
+                if (nx < 0 || ny < 0 || nx >= n || ny >= m) { // && 아니다 || 이다 주의!!!
+                    continue;
+                }
 
-                // 다 통과를 한다면
-                if (nx >= 0 && nx < map.length &&
-                        ny >= 0 && ny < map[0].length &&
-                        visited[nx][ny] == 0 &&
-                        map[nx][ny] == 1) {
-
-                    // 방문 체크
-                    visited[nx][ny] = visited[x][y] + 1; // visited에 직접 경로의 수를 넣어줌
-                    queue.add(new int[]{nx, ny});
+                // 갈 수 있는 길이면
+                if (!visited[nx][ny] && map[nx][ny] == 1) {
+                    visited[nx][ny] = true; // 방문 체크
+                    queue.add(new int[]{nx, ny}); // 큐에 넣기
+                    map[nx][ny] = map[now[0]][now[1]] + 1;
                 }
             }
+        }
+
+        if (visited[n - 1][m - 1]) {
+            return map[n - 1][m - 1];
+        } else {
+            return -1;
         }
     }
 
@@ -72,28 +84,20 @@ public class Solution {
         n = map.length;
         m = map[0].length;
 
-        visited = new int[n][m]; // visited 2차 배열을 0으로 초기화
-
-        visited[0][0] = 1; // 맨 처음을 포함해야 하므로 1로 초기화
+        visited = new boolean[n][m];
 
 //        System.out.println(Arrays.deepToString(visited));
 
 //        visited[0][0] = true; // 시작 위치 방문 체크
 
-        bfs(map);
-
-        answer = visited[map.length - 1][map[0].length - 1];
-
-        if (answer == 0) {
-            answer = -1;
-        }
+        answer = bfs(0, 0, map);
 
         return answer;
     }
 
     public static void main(String[] args) throws Exception {
 
-        Solution sol = new Solution();
+        Solution_Node sol = new Solution_Node();
 
         Scanner sc = new Scanner(System.in);
 

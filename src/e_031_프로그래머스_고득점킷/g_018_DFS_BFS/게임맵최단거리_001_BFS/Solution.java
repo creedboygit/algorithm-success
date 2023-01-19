@@ -35,12 +35,13 @@ public class Solution {
 
         while (!queue.isEmpty()) {
 
-            int[] temp = queue.poll();
+            int[] now = queue.poll();
 
+            // 상하좌우 탐색
             for (int i = 0; i < 4; i++) {
 
-                int nx = temp[0] + dx[i]; // 이동했을 때 위치
-                int ny = temp[1] + dy[i]; // 이동했을 때 위치
+                int nx = now[0] + dx[i]; // 이동했을 때 위치
+                int ny = now[1] + dy[i]; // 이동했을 때 위치
 
                 // 범위를 벗어나면 continue
                 if (nx < 0 || ny < 0 || nx >= n || ny >= m) { // && 아니다 || 이다 주의!!!
@@ -51,7 +52,7 @@ public class Solution {
                 if (!visited[nx][ny] && map[nx][ny] == 1) {
                     visited[nx][ny] = true; // 방문 체크
                     queue.add(new int[]{nx, ny}); // 큐에 넣기
-                    map[nx][ny] = map[temp[0]][temp[1]] + 1;
+                    map[nx][ny] = map[now[0]][now[1]] + 1;
                 }
             }
         }
