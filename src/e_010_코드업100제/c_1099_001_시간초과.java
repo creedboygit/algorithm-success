@@ -1,6 +1,5 @@
 package e_010_코드업100제;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 /*
@@ -28,7 +27,7 @@ import java.util.Scanner;
 1 1 1 1 1 1 1 1 1 1
  */
 
-public class c_1099 {
+public class c_1099_001_시간초과 {
 
     public static void main(String[] args) {
 
