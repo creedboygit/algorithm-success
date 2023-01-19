@@ -1,4 +1,4 @@
-package e_031_프로그래머스_고득점킷.g_018_DFS_BFS.네트워크_BFS;
+package e_031_프로그래머스_고득점킷.g_018_DFS_BFS;
 
 /*
 https://school.programmers.co.kr/learn/courses/30/lessons/43162
@@ -18,11 +18,12 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-public class Solution {
+//게임맵최단거리_001_BFS
+public class 네트워크_002_BFS {
 
-    boolean[] visited;
+    static boolean[] visited;
 
-    public void bfs(int node, int[][] computers) { // 모든 컴퓨터를 돌면서 방문
+    public static void bfs(int node, int[][] computers) { // 모든 컴퓨터를 돌면서 방문
 
         Queue<Integer> q = new LinkedList<>();
 
@@ -45,7 +46,7 @@ public class Solution {
     }
 
 //    public int solution(int n, int[][] computers) {
-    public int solution(int n, int[][] computers) {
+    public static int solution(int n, int[][] computers) {
 
         int answer = 0;
 
@@ -68,8 +69,6 @@ public class Solution {
 
     public static void main(String[] args) throws Exception {
 
-        Solution sol = new Solution();
-
         Scanner sc = new Scanner(System.in);
 
         int n = sc.nextInt();
@@ -84,7 +83,7 @@ public class Solution {
 
 //        System.out.println(Arrays.deepToString(computers));
 
-        System.out.println(sol.solution(n, computers));
+        System.out.println(solution(n, computers));
 //        System.out.println(sol.solution());
     }
 }

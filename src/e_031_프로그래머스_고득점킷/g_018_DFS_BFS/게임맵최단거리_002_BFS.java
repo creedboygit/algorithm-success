@@ -1,4 +1,4 @@
-package e_031_프로그래머스_고득점킷.g_018_DFS_BFS.게임맵최단거리_002_BFS;
+package e_031_프로그래머스_고득점킷.g_018_DFS_BFS;
 
 /*
 https://school.programmers.co.kr/learn/courses/30/lessons/1844
@@ -18,7 +18,8 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-public class Solution {
+//게임맵최단거리_001_BFS
+public class 게임맵최단거리_002_BFS {
 
     static int[][] visited;
     static int[] dx = {-1, 0, 1, 0};
@@ -65,7 +66,7 @@ public class Solution {
         }
     }
 
-    public int solution(int[][] map) {
+    public static int solution(int[][] map) {
 
         int answer = 0;
 
@@ -93,8 +94,6 @@ public class Solution {
 
     public static void main(String[] args) throws Exception {
 
-        Solution sol = new Solution();
-
         Scanner sc = new Scanner(System.in);
 
         int nn = sc.nextInt();
@@ -111,6 +110,6 @@ public class Solution {
 
 //        System.out.println(Arrays.deepToString(map));
 
-        System.out.println(sol.solution(map));
+        System.out.println(solution(map));
     }
 }

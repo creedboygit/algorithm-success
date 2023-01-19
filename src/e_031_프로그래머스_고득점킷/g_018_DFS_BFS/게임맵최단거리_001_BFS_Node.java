@@ -1,4 +1,4 @@
-package e_031_프로그래머스_고득점킷.g_018_DFS_BFS.게임맵최단거리_001_BFS;
+package e_031_프로그래머스_고득점킷.g_018_DFS_BFS;
 
 /*
 https://school.programmers.co.kr/learn/courses/30/lessons/1844
@@ -14,11 +14,12 @@ https://school.programmers.co.kr/learn/courses/30/lessons/1844
 0 0 0 0 1
  */
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
 
-public class Solution_Node_BufferedReader {
+//단어변환_001_DFS
+public class 게임맵최단거리_001_BFS_Node {
 
     static class Node { // static class로 선언해줘야 한다.
 
@@ -83,6 +84,10 @@ public class Solution_Node_BufferedReader {
 
         visited = new boolean[n][m];
 
+//        System.out.println(Arrays.deepToString(visited));
+
+//        visited[0][0] = true; // 시작 위치 방문 체크
+
         answer = bfs(0, 0, map);
 
         return answer;
@@ -90,22 +95,17 @@ public class Solution_Node_BufferedReader {
 
     public static void main(String[] args) throws Exception {
 
-//        Solution_Node_BufferedReader sol = new Solution_Node_BufferedReader();
+        Scanner sc = new Scanner(System.in);
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
+        int nn = sc.nextInt();
+        int mm = sc.nextInt();
 
-        int nn = Integer.parseInt(st.nextToken());
-        int mm = Integer.parseInt(st.nextToken());
-
+//        int[][] map = new int[n][m];
         int[][] map = new int[nn][mm];
 
         for (int i = 0; i < nn; i++) {
-
-            StringTokenizer st2 = new StringTokenizer(br.readLine());
-
             for (int j = 0; j < mm; j++) {
-                map[i][j] = Integer.parseInt(st2.nextToken());
+                map[i][j] = sc.nextInt();
             }
         }
 

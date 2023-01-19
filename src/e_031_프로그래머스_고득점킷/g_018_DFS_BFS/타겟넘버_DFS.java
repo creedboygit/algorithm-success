@@ -1,4 +1,4 @@
-package e_031_프로그래머스_고득점킷.g_018_DFS_BFS.타겟넘버_DFS;
+package e_031_프로그래머스_고득점킷.g_018_DFS_BFS;
 
 /*
 https://school.programmers.co.kr/learn/courses/30/lessons/43165
@@ -24,15 +24,15 @@ https://hyojun.tistory.com/entry/Programmers-%ED%83%80%EA%B2%9F-%EB%84%98%EB%B2%
 
 
 import java.util.Scanner;
-import java.util.*;
 
-public class Solution {
+//게임맵최단거리_001_BFS
+public class 타겟넘버_DFS {
 
-    int[] numbers;
-    int target;
-    int answer;
+    static int[] numbers;
+    static int target;
+    static int answer;
 
-    public void dfs(int index, int sum) {
+    public static void dfs(int index, int sum) {
 
         // 1. 탈출 조건
         if (index == numbers.length) {
@@ -45,12 +45,12 @@ public class Solution {
         dfs(index + 1, sum - numbers[index]);
     }
 
-    public int solution(int[] numbers, int target) {
+    public static int solution(int[] a, int b) {
 
         answer = 0;
 
-        this.numbers = numbers;
-        this.target = target;
+        numbers = a;
+        target = b;
 
         dfs(0, 0);
 
@@ -59,7 +59,7 @@ public class Solution {
 
     public static void main(String[] args) {
 
-        Solution s = new Solution();
+//        타겟넘버_DFS s = new 타겟넘버_DFS();
 
         Scanner sc = new Scanner(System.in);
 
@@ -75,7 +75,7 @@ public class Solution {
 
         int b = sc.nextInt();
 
-        System.out.println(s.solution(a, b));
+        System.out.println(solution(a, b));
 
         sc.close();
     }
