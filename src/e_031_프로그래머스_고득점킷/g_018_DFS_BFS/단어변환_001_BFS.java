@@ -21,7 +21,7 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 //Solution
-public class 단어변환_004_BFS {
+public class 단어변환_001_BFS {
 
     static boolean visited[];
     static int answer = 0;
