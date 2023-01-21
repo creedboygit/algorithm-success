@@ -12,6 +12,8 @@ hit cog
 hot dot dog lot log cog
 
 답 : 4
+
+최소 경로를 구하는 문제이므로 시간복잡도 때문에 BFS를 이용해야 한다.
  */
 
 import java.io.BufferedReader;
