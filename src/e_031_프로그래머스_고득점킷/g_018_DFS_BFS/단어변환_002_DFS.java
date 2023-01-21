@@ -10,59 +10,61 @@ begin	target	words	return
 hit cog
 6
 hot dot dog lot log cog
+
+답 : 4
  */
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.Scanner;
 import java.util.StringTokenizer;
 
 //Solution
-public class 단어변환_001_DFS {
+public class 단어변환_002_DFS {
 
     static boolean visited[];
     static int answer = 0;
 
     public static int solution(String begin, String target, String[] words) {
 
-        visited = new boolean[words.length];
-
-        dfs(begin, target, words, 0);
-
-        return answer;
+        answer = 51; // 문제 조건에서 50개까지라고 했으므로 최소 51개로 잡음
+        visited = new boolean[words.length]; // 방문 배열 초기화
+        dfs(begin, target, words, 0); // dfs 초기화
+        return answer == 51 ? 0 : answer;
     }
 
-    private static void dfs(String begin, String target, String[] words, int cnt) {
+    private static void dfs(String now, String target, String[] words, int cnt) {
 
         // 탈출 조건
-        if (begin.equals(target)) {
-            answer = cnt;
+        if (now.equals(target)) {
+            answer = Math.min(answer, cnt);
             return;
         }
 
         // 수행 조건
         for (int i = 0; i < words.length; i++) {
-            if (visited[i]) {
-                continue;
-            }
 
-            int k = 0; // 같은 스펠링 몇 개인지 세기
-            for (int j = 0; j < begin.length(); j++) {
-                if (begin.charAt(j) == words[i].charAt(j)) {
-                    k++;
-                }
-            }
+            // 방문하지 않았고, check 시 한 글자만 차이날 때
+            if (!visited[i] && check(now, words[i])) {
 
-            if (k == begin.length() - 1) { // 한 글자 빼고 모두 같은 경우
                 visited[i] = true;
-                dfs(words[i], target, words, cnt + 1);
+                dfs(words[i], target, words, cnt + 1); // cnt++ 아니다 -> cnt + 1 로 해줘야 한다.
                 visited[i] = false; // 꼭 다시 돌아왔을 때 다시 체크하기 위해 방문 배열을 false로 초기화 해줘야 한다.
             }
         }
-
-
     }
+
+    // 1글자만 같은 경우 true 반환
+    public static boolean check(String now, String next) {
+        int count = 0;
+        for (int i = 0; i < now.length(); i++) {
+            if (now.charAt(i) != next.charAt(i)) {
+                count++;
+            }
+        }
+
+        return count == 1 ? true : false;
+    }
+
 
     public static void main(String[] args) throws Exception {
 
