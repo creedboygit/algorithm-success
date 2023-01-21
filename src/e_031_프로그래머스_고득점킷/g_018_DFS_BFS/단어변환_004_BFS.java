@@ -10,59 +10,61 @@ begin	target	words	return
 hit cog
 6
 hot dot dog lot log cog
+
+답 : 4
  */
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.StringTokenizer;
 
 //Solution
-public class 단어변환_001_DFS {
+public class 단어변환_004_BFS {
 
     static boolean visited[];
     static int answer = 0;
 
     public static int solution(String begin, String target, String[] words) {
 
-        visited = new boolean[words.length];
-
-        dfs(begin, target, words, 0);
-
-        return answer;
+        visited = new boolean[words.length]; // 방문 배열 초기화
+        return bfs(begin, target, words);
     }
 
-    private static void dfs(String begin, String target, String[] words, int cnt) {
+    private static int bfs(String begin, String target, String[] words) {
 
-        // 탈출 조건
-        if (begin.equals(target)) {
-            answer = cnt;
-            return;
-        }
+        Queue<Node> q = new LinkedList<>();
+        q.offer(new Node(begin, 0));
 
-        // 수행 조건
-        for (int i = 0; i < words.length; i++) {
-            if (visited[i]) {
-                continue;
-            }
+        while (!q.isEmpty()) {
 
-            int k = 0; // 같은 스펠링 몇 개인지 세기
-            for (int j = 0; j < begin.length(); j++) {
-                if (begin.charAt(j) == words[i].charAt(j)) {
-                    k++;
+            Node node = q.poll();
+            if (node.word.equals(target)) return node.count;
+
+            for (int i = 0; i < words.length; i++) {
+                if (!visited[i] && check(node.word, words[i])) {
+                    visited[i] = true;
+                    q.offer(new Node(words[i], node.count + 1));
                 }
             }
+        }
 
-            if (k == begin.length() - 1) { // 한 글자 빼고 모두 같은 경우
-                visited[i] = true;
-                dfs(words[i], target, words, cnt + 1);
-                visited[i] = false; // 꼭 다시 돌아왔을 때 다시 체크하기 위해 방문 배열을 false로 초기화 해줘야 한다. 다시 탐색을 위해서 방문 처리 초기화
+        return 0;
+    }
+
+    // 1글자만 같은 경우 true 반환
+    public static boolean check(String s1, String s2) {
+        int count = 0;
+        for (int i = 0; i < s1.length(); i++) {
+            if (s1.charAt(i) != s2.charAt(i)) {
+                count++;
             }
         }
 
-
+        return count == 1 ? true : false;
     }
+
 
     public static void main(String[] args) throws Exception {
 
@@ -86,5 +88,16 @@ public class 단어변환_001_DFS {
 //        System.out.println(begin);
 //        System.out.println(target);
 //        System.out.println(Arrays.toString(words));
+    }
+
+    private static class Node {
+
+        String word;
+        int count;
+
+        public Node(String word, int count) {
+            this.word = word;
+            this.count = count;
+        }
     }
 }

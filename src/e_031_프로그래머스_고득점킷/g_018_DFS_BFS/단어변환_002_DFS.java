@@ -48,7 +48,7 @@ public class 단어변환_002_DFS {
 
                 visited[i] = true;
                 dfs(words[i], target, words, cnt + 1); // cnt++ 아니다 -> cnt + 1 로 해줘야 한다.
-                visited[i] = false; // 꼭 다시 돌아왔을 때 다시 체크하기 위해 방문 배열을 false로 초기화 해줘야 한다.
+                visited[i] = false; // 꼭 다시 돌아왔을 때 다시 체크하기 위해 방문 배열을 false로 초기화 해줘야 한다. 다시 탐색을 위해서 방문 처리 초기화
             }
         }
     }
