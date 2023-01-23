@@ -1,11 +1,12 @@
-## 좌표정렬 그냥 외우자
+package c_010_인프런.i_006_정렬이분검색과결정알고리즘.i_006_007_좌표정렬_compareTo;
+
 import java.util.*;
 
 public class Main {
 
-//https://www.c_010_인프런.com/course/%EC%9E%90%EB%B0%94-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4-%EC%BD%94%ED%85%8C%EB%8C%80%EB%B9%84/unit/72760?tab=curriculum
+//https://www.inflearn.com/course/%EC%9E%90%EB%B0%94-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4-%EC%BD%94%ED%85%8C%EB%8C%80%EB%B9%84/unit/72760?tab=curriculum
 
-//https://cote.c_010_인프런.com/contest/10/problem/06-07
+//https://cote.inflearn.com/contest/10/problem/06-07
 
 /*
 7. 좌표 정렬
@@ -44,7 +45,7 @@ N개의 좌표를 정렬하여 출력하세요.
 */
     public static void main(String[] args) throws Exception {
 
-//        Main t = new Main();
+//        Main9 t = new Main9();
 
 //        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 //        String str = br.readLine();
