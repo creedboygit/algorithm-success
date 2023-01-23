@@ -23,10 +23,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.StringTokenizer;
-
-import static e_031_프로그래머스_고득점킷.g_018_DFS_BFS.타겟넘버_DFS.dfs;
 
 //Solution
 public class 여행경로_001_DFS {
@@ -49,6 +48,23 @@ public class 여행경로_001_DFS {
         return answer;
     }
 
+    private static void dfs(int count, String present, String answer, String[][] tickets) {
+
+        if (count == tickets.length) { // 모든 공항을 돌았다면
+            answers.add(answer); // answer에 추가
+            return;
+        }
+
+        for (int i = 0; i < tickets.length; i++) {
+            if (!visited[i] && tickets[i][0].equals(present)) { // present와 같고 들리지 않은 공항을 찾고
+                visited[i] = true; // 해당 공항을 들린 것으로 방문 체크
+                dfs(count + 1, tickets[i][1], answer + " " + tickets[i][1], tickets); // 카운트 + 1 도착 공항을 present로 넣어주고 answer에 도착 공항을 추가한다.
+                visited[i] = false;
+            }
+        }
+    }
+
+
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -63,6 +79,6 @@ public class 여행경로_001_DFS {
 
 //        System.out.println(Arrays.deepToString(arr));
 
-        System.out.println(solution(tickets));
+        System.out.println(Arrays.toString(solution(tickets)));
     }
 }
