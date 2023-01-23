@@ -44,7 +44,7 @@ public class 여행경로_001_DFS {
 
         Collections.sort(answers); // 답들 중 가장 알파벳 순이 빠른 배열들로 정렬
 
-        String[] answer = answers.get(0).split(" ");
+        String[] answer = answers.get(0).split(" "); // 답들 중 가장 알파벳 순이 빠른 것에서 빈 칸으로 split 해서 배열에 담음
         return answer;
     }
 
