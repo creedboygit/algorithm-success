@@ -25,7 +25,7 @@ import java.io.InputStreamReader;
 import java.util.*;
 
 //Solution
-public class 여행경로_002_DFS_우선순위큐 {
+public class 여행경로_003_DFS_우선순위큐 {
 
     static ArrayList<String> path = new ArrayList<>();
     static PriorityQueue<String> answer = new PriorityQueue<>();
