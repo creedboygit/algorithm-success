@@ -22,47 +22,49 @@ JFK HND
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
 //Solution
 public class 여행경로_002_DFS_미리정렬해놓기 {
 
-    static ArrayList<String> path = new ArrayList<>();
-    static PriorityQueue<String> answer = new PriorityQueue<>();
+
+    static String answer;
     static boolean visited[];
 
     public static String[] solution(String[][] tickets) {
 
+        answer = "";
+
         visited = new boolean[tickets.length];
 
-        dfs("ICN", 0, tickets);
+        Arrays.sort(tickets, (o1, o2) -> o1[1].compareTo(o2[1]));
 
-//        return answer.poll().split(" ");
-        return answer.poll().split(",");
+        dfs(0, "ICN", "ICN", tickets);
+
+        return answer.split(" ");
     }
 
-    private static void dfs(String cur, int depth, String[][] tickets) {
+    private static void dfs(int count, String cur, String result, String[][] tickets) {
 
-        path.add(cur);
+        if (count == tickets.length) { // 모든 공항을 돌았다면
+            if (!answer.equals("")) {
+                return;
+            }
 
-        if (depth == tickets.length) {
-//            answer.add(String.join(" ", path));
-            answer.add(String.join(",", path));
+            answer = result;
             return;
         }
 
         for (int i = 0; i < tickets.length; i++) {
-            if (!visited[i] && tickets[i][0].equals(cur)) { // i번째 티켓을 아직 사용하지 않았고, 출발지가 cur과 같은 티켓이 있다면
-                visited[i] = true;
-                dfs(tickets[i][1], depth + 1, tickets);
+            if (!visited[i] && cur.equals(tickets[i][0])) { // present와 같고 들리지 않은 공항을 찾고
+                visited[i] = true; // 해당 공항을 들린 것으로 방문 체크
+                dfs(count + 1, tickets[i][1], result + " " + tickets[i][1], tickets); // 카운트 + 1 도착 공항을 present로 넣어주고 answer에 도착 공항을 추가한다.
                 visited[i] = false;
-                path.remove(path.size() - 1);
             }
         }
     }
+
 
     public static void main(String[] args) throws IOException {
 
