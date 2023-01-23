@@ -3,6 +3,8 @@ package e_031_프로그래머스_고득점킷.g_018_DFS_BFS;
 /*
 https://school.programmers.co.kr/learn/courses/30/lessons/87694
 
+https://blue-jay.tistory.com/88
+
 [[1,1,7,4],[3,2,5,5],[4,3,6,9],[2,6,8,8]]	1	3	7	8
 정답 : 17
 
