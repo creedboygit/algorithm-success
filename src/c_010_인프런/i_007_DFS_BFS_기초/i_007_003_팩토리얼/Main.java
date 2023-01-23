@@ -1,4 +1,4 @@
-package c_010_인프런.i_007_Recursive_Tree_Graph_DFS_BFS_기초.i_007_003_팩토리얼;
+package c_010_인프런.i_007_DFS_BFS_기초.i_007_003_팩토리얼;
 
 public class Main {
 

@@ -1,4 +1,4 @@
-package c_010_인프런.i_007_Recursive_Tree_Graph_DFS_BFS_기초.i_007_006_부분집합구하기_DFS;
+package c_010_인프런.i_007_DFS_BFS_기초.i_007_006_부분집합구하기_DFS;
 
 public class Main {
 

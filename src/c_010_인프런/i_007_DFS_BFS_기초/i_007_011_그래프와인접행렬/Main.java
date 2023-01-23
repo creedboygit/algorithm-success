@@ -1,4 +1,4 @@
-package c_010_인프런.i_007_Recursive_Tree_Graph_DFS_BFS_기초.i_007_011_그래프와인접행렬;
+package c_010_인프런.i_007_DFS_BFS_기초.i_007_011_그래프와인접행렬;
 
 import java.util.*;
 

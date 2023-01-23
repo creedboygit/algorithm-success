@@ -1,4 +1,4 @@
-package c_010_인프런.i_007_Recursive_Tree_Graph_DFS_BFS_기초.i_007_014_그래프최단거리_BFS;
+package c_010_인프런.i_007_DFS_BFS_기초.i_007_014_그래프최단거리_BFS;
 
 import java.util.*;
 

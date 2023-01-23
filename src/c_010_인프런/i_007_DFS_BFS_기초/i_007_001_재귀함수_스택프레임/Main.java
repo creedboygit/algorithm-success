@@ -1,4 +1,4 @@
-package c_010_인프런.i_007_Recursive_Tree_Graph_DFS_BFS_기초.i_007_001_재귀함수_스택프레임;
+package c_010_인프런.i_007_DFS_BFS_기초.i_007_001_재귀함수_스택프레임;
 
 public class Main {
 

@@ -1,4 +1,4 @@
-package c_010_인프런.i_007_Recursive_Tree_Graph_DFS_BFS_기초.i_007_013_경로탐색_인접리스트_ArrayList;
+package c_010_인프런.i_007_DFS_BFS_기초.i_007_013_경로탐색_인접리스트_ArrayList;
 
 import java.util.*;
 

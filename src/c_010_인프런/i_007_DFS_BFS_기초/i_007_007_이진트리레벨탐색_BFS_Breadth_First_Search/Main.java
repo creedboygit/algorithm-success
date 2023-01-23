@@ -1,4 +1,4 @@
-package c_010_인프런.i_007_Recursive_Tree_Graph_DFS_BFS_기초.i_007_007_이진트리레벨탐색_BFS_Breadth_First_Search;
+package c_010_인프런.i_007_DFS_BFS_기초.i_007_007_이진트리레벨탐색_BFS_Breadth_First_Search;
 
 import java.util.*;
 
