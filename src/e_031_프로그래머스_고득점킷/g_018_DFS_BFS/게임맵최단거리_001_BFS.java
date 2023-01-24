@@ -18,7 +18,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-//단어변환_001_DFS
+//Solution
 public class 게임맵최단거리_001_BFS {
 
     static boolean[][] visited;

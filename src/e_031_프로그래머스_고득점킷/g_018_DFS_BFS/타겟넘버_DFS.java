@@ -25,7 +25,7 @@ https://hyojun.tistory.com/entry/Programmers-%ED%83%80%EA%B2%9F-%EB%84%98%EB%B2%
 
 import java.util.Scanner;
 
-//게임맵최단거리_001_BFS
+//Solution
 public class 타겟넘버_DFS {
 
     static int[] numbers;

@@ -18,7 +18,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-//게임맵최단거리_001_BFS
+//Solution
 public class 네트워크_002_BFS {
 
     static boolean[] visited;

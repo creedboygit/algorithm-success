@@ -16,7 +16,7 @@ https://school.programmers.co.kr/learn/courses/30/lessons/43162
 
 import java.util.*;
 
-//게임맵최단거리_001_BFS
+//Solution
 public class 네트워크_001_DFS {
 
     static boolean[] visited;

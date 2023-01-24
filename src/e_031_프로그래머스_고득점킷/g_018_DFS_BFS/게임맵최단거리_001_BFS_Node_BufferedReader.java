@@ -18,7 +18,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.*;
 
-//단어변환_001_DFS
+//Solution
 public class 게임맵최단거리_001_BFS_Node_BufferedReader {
 
     static class Node { // static class로 선언해줘야 한다.
