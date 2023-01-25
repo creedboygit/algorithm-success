@@ -24,6 +24,7 @@ https://school.programmers.co.kr/learn/courses/30/lessons/42862
  */
 
 import java.io.*;
+import java.util.Arrays;
 
 //Solution
 public class 체육복_001_그리디_배열 {
@@ -33,6 +34,9 @@ public class 체육복_001_그리디_배열 {
         // 1. student 배열 생성
         int[] student = new int[n + 2]; // 앞뒤로 빌려줘야 하므로 여분으로 앞 0, 뒤 6을 위해 2개를 추가해줌 (소스를 깔끔하게 하기 위해)
         int answer = 0;
+
+        Arrays.sort(lostArr); // 꼭 정렬해줘야 한다.
+        Arrays.sort(reserveArr); // 꼭 정렬해줘야 한다.
 
         // 2. reserve / lost 정보 반영
         for (int l : lostArr)
