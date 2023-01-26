@@ -28,7 +28,7 @@ import java.io.InputStreamReader;
 import java.util.HashSet;
 
 //Solution
-public class 체육복_002_그리디_HashSet {
+public class 체육복_003_그리디_HashSet {
 
     public static int solution(int n, int[] lostArr, int[] reserveArr) {
 

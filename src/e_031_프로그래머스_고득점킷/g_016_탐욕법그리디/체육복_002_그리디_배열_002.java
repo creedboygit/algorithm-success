@@ -23,49 +23,54 @@ https://school.programmers.co.kr/learn/courses/30/lessons/42862
 정답 : 4
  */
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 
 //Solution
-public class 체육복_001_그리디_배열 {
+public class 체육복_002_그리디_배열_002 {
 
     public static int solution(int n, int[] lostArr, int[] reserveArr) {
+
+        int answer = 0;
 
         // 1. student 배열 생성
         // 밑에 비교하는 반복문에서 0이나 n에서 앞뒤학생비교시
         // 값이 없으면 Out of Index에러나옴, 이를 피하기 위해 n+2로 만든다.
         int[] student = new int[n + 2]; // 앞뒤로 빌려줘야 하므로 여분으로 앞 0, 뒤 6을 위해 2개를 추가해줌 (소스를 깔끔하게 하기 위해)
-        int answer = 0;
 
         Arrays.sort(lostArr); // 꼭 정렬해줘야 한다.
         Arrays.sort(reserveArr); // 꼭 정렬해줘야 한다.
 
-        // 2. reserve / lost 정보 반영
-        for (int l : lostArr)
-            student[l]--;
+        // 일단 모든 학생이 체육복을 가져온 것으로 한다.
+        Arrays.fill(student, 1);
+        student[0] = student[n + 1] = 0;
 
-        for (int r : reserveArr)
-            student[r]++;
+        // reserve 학생들 +1
+        for (int i = 0; i < reserveArr.length; i++) student[reserveArr[i]]++;
 
-        // 3. 여분을 기준으로 앞뒤를 확인하여 체육복을 빌려준다.
-        // -1 : 도난당한 학생 / 0 : 본인것만 가지고 있는 학생 / 1 : 여분을 가지고 있는 학생
+        // lost 학생들 -1
+        for (int i = 0; i < lostArr.length; i++) student[lostArr[i]]--;
+
+        // 체육복없는 학생들 빌려주기
         for (int i = 1; i <= n; i++) {
-            if (student[i] == 1) { // i번째 학생이 여분의 체육복을 가지고 있다면
-                if (student[i - 1] == -1) { // 앞 학생이 도난당한 학생일 경우
-                    student[i]--;
-                    student[i - 1]++;
-                } else if (student[i + 1] == -1) { // 뒤 학생이 도난당한 학생일 경우
-                    student[i]--;
-                    student[i + 1]++;
+            if (student[i] == 0) {
+                //앞 학생이 여벌있을 때
+                if (student[i - 1] == 2) {
+                    student[i - 1]--;
+                    student[i]++;
+
+                    //뒤 학생이 여벌있을 때
+                } else if (student[i + 1] == 2) {
+                    student[i + 1]--;
+                    student[i]++;
                 }
             }
         }
 
-        // 4. 체육복을 가지고 있는 학생수를 구한다.
-        for (int i = 1; i <= n; i++) {
-            if (student[i] >= 0)
-                answer++;
-        }
+        //체육복 가지고 있는 학생 수 세기
+        for (int i = 1; i <= n; i++)
+            if (student[i] != 0) answer++;
 
         return answer;
     }
