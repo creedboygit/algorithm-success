@@ -20,7 +20,7 @@ import java.util.StringTokenizer;
 //Solution
 public class 큰수만들기_001_그리디 {
 
-    public static int solution(int num, int n) {
+    public static int solution(String num, int n) {
 
         int answer = 0;
 
@@ -35,7 +35,7 @@ public class 큰수만들기_001_그리디 {
 
         StringTokenizer st = new StringTokenizer(br.readLine());
 
-        int num = Integer.parseInt(st.nextToken());
+        String num = st.nextToken();
         int n = Integer.parseInt(st.nextToken());
 
         System.out.println(solution(num, n));
