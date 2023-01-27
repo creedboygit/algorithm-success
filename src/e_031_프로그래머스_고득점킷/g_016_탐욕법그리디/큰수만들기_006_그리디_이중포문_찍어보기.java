@@ -23,31 +23,46 @@ https://school.programmers.co.kr/learn/courses/30/lessons/42883
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.Stack;
 import java.util.StringTokenizer;
 
 //Solution
-public class 큰수만들기_005_그리디_이중포문 {
+public class 큰수만들기_006_그리디_이중포문_찍어보기 {
 
     public static String solution(String number, int k) {
 
         StringBuilder answer = new StringBuilder();
 
         int idx = 0;
-        int comp = 0;
+        int max = 0;
 
         for (int i = 0; i < number.length() - k; i++) {
 
-            comp = 0;
+            max = 0;
+
+            System.out.println("i : " + i);
 
             for (int j = idx; j <= i + k; j++) {
-                if (comp < number.charAt(j) - '0') {
-                    comp = number.charAt(j) - '0';
+
+                System.out.println("j : " + j);
+
+                if (max < number.charAt(j) - '0') {
+                    max = number.charAt(j) - '0';
+
+                    System.out.println("max1 : " + max);
+
                     idx = j + 1;
+
+                    System.out.println("idx2 : " + idx);
+                    System.out.println();
                 }
+
+                System.out.println("max2 : " + max);
             }
 
-            answer.append(comp);
+            System.out.println();
+            System.out.println();
+
+            answer.append(max);
         }
 
         return answer.toString();
