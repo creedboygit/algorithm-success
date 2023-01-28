@@ -114,7 +114,7 @@ public class 섬연결하기_007_크루스칼_stream {
             costs[i][2] = Integer.parseInt(st.nextToken());
         }
 
-//        System.out.println(Arrays.d1eepToString(line));
+//        System.out.println(Arrays.deepToString(line));
 
         System.out.println(solution(n, costs));
     }
