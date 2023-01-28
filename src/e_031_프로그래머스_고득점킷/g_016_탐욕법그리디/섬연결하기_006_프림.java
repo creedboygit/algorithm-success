@@ -22,11 +22,31 @@ https://school.programmers.co.kr/learn/courses/30/lessons/42861
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Arrays;
-import java.util.Comparator;
+import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
 //Solution
-public class 섬연결하기_003_크루스칼 {
+public class 섬연결하기_006_프림 {
+
+    public static class Edge implements Comparable<Edge> {
+
+        int v1;
+        int v2;
+        int cost;
+
+        public Edge(int v1, int v2, int cost) {
+            this.v1 = v1;
+            this.v2 = v2;
+            this.cost = cost;
+        }
+
+
+        // 오름차순 정렬
+        @Override
+        public int compareTo(Edge o) {
+            return this.cost - o.cost;
+        }
+    }
 
     static int[] parent;
 
@@ -41,39 +61,40 @@ public class 섬연결하기_003_크루스칼 {
         a = find(a);
         b = find(b);
 
-        if (a > b)
-            parent[a] = b;
-        else
-            parent[b] = a;
+        parent[a] = b;
     }
 
     public static int solution(int n, int[][] costs) {
 
         int answer = 0;
 
+//        PriorityQueue<Edge> pq = new PriorityQueue<Edge>();
+        PriorityQueue<Edge> pq = new PriorityQueue<Edge>((a, b) -> (a.cost - b.cost));
         parent = new int[n];
 
-        for (int i = 0; i < parent.length; i++) {
-            parent[i] = i; // 집합 배열 초기화
+        for (int i = 0; i < n; parent[i] = i++) {
         }
 
-        Arrays.sort(costs, new Comparator<int[]>() {
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                if (o1[2] > o2[2]) // 비용으로 오름차순 정렬
-                    return 1;
-                else
-                    return -1;
-
-//                return o1[2] - o2[2]; // 이걸로만 해도 된다.
-            }
-        });
-
         for (int i = 0; i < costs.length; i++) {
-            if (find(costs[i][0]) == find(costs[i][1]))
-                continue;
-            union(costs[i][0], costs[i][1]);
-            answer += costs[i][2];
+
+            int v1 = costs[i][0];
+            int v2 = costs[i][1];
+            int cost = costs[i][2];
+
+            pq.offer(new Edge(v1, v2, cost));
+        }
+
+        int cnt = 0;
+
+        while (!pq.isEmpty()) {
+            Edge edge = pq.poll();
+
+            if (find(edge.v1) == find(edge.v2)) continue;
+
+            union(edge.v1, edge.v2);
+            answer += edge.cost;
+
+            if (cnt == n - 1) return answer; // 간선은 무조건 노드 개수 -1 한 것이므로 간선의 개수만큼만 돌아서 시간 복잡도를 아낀다.
         }
 
         return answer;

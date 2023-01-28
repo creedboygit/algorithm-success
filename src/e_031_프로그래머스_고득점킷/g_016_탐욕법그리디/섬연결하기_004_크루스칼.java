@@ -26,7 +26,7 @@ import java.util.Comparator;
 import java.util.StringTokenizer;
 
 //Solution
-public class 섬연결하기_003_크루스칼 {
+public class 섬연결하기_004_크루스칼 {
 
     static int[] parent;
 
@@ -35,16 +35,6 @@ public class 섬연결하기_003_크루스칼 {
             return parent[a];
         else
             return parent[a] = find(parent[a]);
-    }
-
-    public static void union(int a, int b) {
-        a = find(a);
-        b = find(b);
-
-        if (a > b)
-            parent[a] = b;
-        else
-            parent[b] = a;
     }
 
     public static int solution(int n, int[][] costs) {
@@ -60,20 +50,18 @@ public class 섬연결하기_003_크루스칼 {
         Arrays.sort(costs, new Comparator<int[]>() {
             @Override
             public int compare(int[] o1, int[] o2) {
-                if (o1[2] > o2[2]) // 비용으로 오름차순 정렬
-                    return 1;
-                else
-                    return -1;
-
-//                return o1[2] - o2[2]; // 이걸로만 해도 된다.
+                return o1[2] - o2[2]; // 이걸로만 해도 된다.
             }
         });
 
-        for (int i = 0; i < costs.length; i++) {
-            if (find(costs[i][0]) == find(costs[i][1]))
-                continue;
-            union(costs[i][0], costs[i][1]);
-            answer += costs[i][2];
+        for (int[] i : costs) {
+            int a = find(i[0]);
+            int b = find(i[1]);
+
+            if (a != b) { // 연결되어 있지 않으면
+                answer += i[2]; // 최소 비용을 더해준다.
+                parent[a] = b; // 신규 연결. 기존의 연결선을 끊지 않고 연결해준다.
+            }
         }
 
         return answer;
