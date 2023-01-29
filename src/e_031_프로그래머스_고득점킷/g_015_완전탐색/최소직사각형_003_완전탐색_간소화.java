@@ -28,7 +28,7 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 //Solution
-public class 최소직사각형_002_완전탐색_간소화 {
+public class 최소직사각형_003_완전탐색_간소화 {
 
     public static int solution(int[][] sizes) {
 
