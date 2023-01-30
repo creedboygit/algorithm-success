@@ -17,10 +17,9 @@ https://school.programmers.co.kr/learn/courses/30/lessons/42839
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.HashSet;
-import java.util.Iterator;
 
 //Solution
-public class 소수찾기_002_완전탐색_DFS {
+public class 소수찾기_002_완전탐색_DFS_백트래킹 {
 
     static HashSet<Integer> set = new HashSet<>(); // 중복값 제거 위한 set
     static char[] arr; // 숫자가 적힌 종이조각
