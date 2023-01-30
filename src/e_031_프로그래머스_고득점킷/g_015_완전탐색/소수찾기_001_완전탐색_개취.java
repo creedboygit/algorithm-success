@@ -16,32 +16,30 @@ https://school.programmers.co.kr/learn/courses/30/lessons/42839
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.StringTokenizer;
 
 //Solution
 public class 소수찾기_001_완전탐색_개취 {
 
     static HashSet<Integer> numberSet = new HashSet<>(); // 중복값 제거 위한 set
 
-    public static boolean isPrime(int number) {
+    public static boolean isPrime(int numbers) {
         // 1. 0과 1은 소수가 아니다.
-        if (number == 0 || number == 1) {
+        if (numbers == 0 || numbers == 1) {
             return false;
         }
 
         // 2. 에라토스테네스의 체의 limit 숫자를 계산한다.
-        int limit = (int) Math.sqrt(number);
+        int limit = (int) Math.sqrt(numbers);
 
         // 3. 에라토스테네스의 체에 따라 limit 까지 배수 여부를 확인한다.
         for (int i = 2; i <= limit; i++) {
-            if (number % i == 0)
+            if (numbers % i == 0)
                 return false;
         }
 
-//        System.out.println(number);
+//        System.out.println(numbers);
 
         return true;
     }
@@ -60,10 +58,10 @@ public class 소수찾기_001_완전탐색_개취 {
 
     }
 
-    public static int solution(String number) {
+    public static int solution(String numbers) {
 
         // 1. 모든 조합의 숫자를 만든다. (재귀 함수 이용)
-        dfs("", number); // dfs 초기화
+        dfs("", numbers); // dfs 초기화
 
         // 2. 소수의 개수만 센다.
         int count = 0;

@@ -25,14 +25,14 @@ public class 소수찾기_002_완전탐색_DFS_백트래킹 {
     static char[] arr; // 숫자가 적힌 종이조각
     static boolean[] visited; // 방문 여부
 
-    public static int solution(String number) {
+    public static int solution(String numbers) {
 
         int answer = 0;
-        arr = new char[number.length()];
-        visited = new boolean[number.length()];
+        arr = new char[numbers.length()];
+        visited = new boolean[numbers.length()];
 
-        for (int i = 0; i < number.length(); i++) {
-            arr[i] = number.charAt(i);
+        for (int i = 0; i < numbers.length(); i++) {
+            arr[i] = numbers.charAt(i);
         }
 
         dfs("", 0);
@@ -65,18 +65,18 @@ public class 소수찾기_002_완전탐색_DFS_백트래킹 {
     }
 
     // 소수 판별
-    public static boolean isPrime(int number) {
+    public static boolean isPrime(int numbers) {
         // 1. 0과 1은 소수가 아니다.
-        if (number == 0 || number == 1) {
+        if (numbers == 0 || numbers == 1) {
             return false;
         }
 
         // 2. 에라토스테네스의 체의 limit 숫자를 계산한다.
-        int limit = (int) Math.sqrt(number);
+        int limit = (int) Math.sqrt(numbers);
 
         // 3. 에라토스테네스의 체에 따라 limit 까지 배수 여부를 확인한다.
         for (int i = 2; i <= limit; i++) {
-            if (number % i == 0)
+            if (numbers % i == 0)
                 return false;
         }
 
