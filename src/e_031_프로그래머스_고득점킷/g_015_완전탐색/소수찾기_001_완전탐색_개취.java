@@ -24,6 +24,26 @@ public class 소수찾기_001_완전탐색_개취 {
 
     static HashSet<Integer> numberSet = new HashSet<>(); // 중복값 제거 위한 set
 
+    public static int solution(String numbers) {
+
+        // 1. 모든 조합의 숫자를 만든다. (재귀 함수 이용)
+        dfs("", numbers); // dfs 초기화
+
+        // 2. 소수의 개수만 센다.
+        int count = 0;
+        Iterator<Integer> it = numberSet.iterator();
+
+        while (it.hasNext()) {
+            int num = it.next();
+
+            if (isPrime(num))
+                count++;
+        }
+
+        // 3. 소수의 개수를 반환한다.
+        return count;
+    }
+
     public static boolean isPrime(int numbers) {
         // 1. 0과 1은 소수가 아니다.
         if (numbers == 0 || numbers == 1) {
@@ -56,26 +76,6 @@ public class 소수찾기_001_완전탐색_개취 {
         for (int i = 0; i < others.length(); i++)
             dfs(comb + others.charAt(i), others.substring(0, i) + others.substring(i + 1));
 
-    }
-
-    public static int solution(String numbers) {
-
-        // 1. 모든 조합의 숫자를 만든다. (재귀 함수 이용)
-        dfs("", numbers); // dfs 초기화
-
-        // 2. 소수의 개수만 센다.
-        int count = 0;
-        Iterator<Integer> it = numberSet.iterator();
-
-        while (it.hasNext()) {
-            int num = it.next();
-
-            if (isPrime(num))
-                count++;
-        }
-
-        // 3. 소수의 개수를 반환한다.
-        return count;
     }
 
     public static void main(String[] args) throws Exception {
