@@ -32,7 +32,7 @@ import java.util.StringTokenizer;
 //Solution
 public class 전력망을둘로나누기_001_완전탐색_BFS {
 
-    static int arr[][];
+    static int map[][];
 
     public static int solution(int n, int[][] wires) {
 
@@ -40,7 +40,7 @@ public class 전력망을둘로나누기_001_완전탐색_BFS {
 
         int answer = n; // n으로 초기화
 
-        arr = new int[n + 1][n + 1]; // 1부터 시작이고 인덱스 번호를 써야 하므로 n + 1
+        map = new int[n + 1][n + 1]; // 1부터 시작이고 인덱스 번호를 써야 하므로 n + 1
 
         // 1. 인접 행렬에 input
         for (int i = 0; i < wires.length; i++) {
@@ -48,7 +48,7 @@ public class 전력망을둘로나누기_001_완전탐색_BFS {
             int n1 = wires[i][0];
             int n2 = wires[i][1];
 
-            arr[n1][n2] = arr[n2][n1] = 1; // 양방향이므로 모두 1로 초기화
+            map[n1][n2] = map[n2][n1] = 1; // 양방향이므로 모두 1로 초기화
         }
 
         //        System.out.println(Arrays.toString(arr));
@@ -60,15 +60,15 @@ public class 전력망을둘로나누기_001_완전탐색_BFS {
             b = wires[i][1];
 
             // 선을 하나 끊고
-            arr[a][b] = 0;
-            arr[b][a] = 0;
+            map[a][b] = 0;
+            map[b][a] = 0;
 
             // BFS
             answer = Math.min(answer, bfs(n, a));
 
             // 선 다시 복구 이어주기
-            arr[a][b] = 1;
-            arr[b][a] = 1;
+            map[a][b] = 1;
+            map[b][a] = 1;
         }
 
         return answer;
@@ -77,20 +77,23 @@ public class 전력망을둘로나누기_001_완전탐색_BFS {
     public static int bfs(int n, int start) {
 
         boolean[] visit = new boolean[n + 1];
-        int cnt = 1;
 
+        int cnt = 1;
         Queue<Integer> queue = new LinkedList<>();
-        queue.offer(start);
+
+        queue.offer(start); // 초기화
+        visit[start] = true; // 초기화
 
         while(!queue.isEmpty()) {
-            int point = queue.poll();
-            visit[point] = true;
+            int now = queue.poll();
+            visit[now] = true;
 
             for (int i = 1; i <= n; i++) { // point와 연결된 인접한 애들 중에 방문한 적 없는 노드를 큐에 넣고 cnt++
                 if (visit[i]) continue;
 
-                if (arr[point][i] == 1) {
+                if (map[now][i] == 1) {
                     queue.offer(i);
+                    visit[i] = true;
                     cnt++;
                 }
 
