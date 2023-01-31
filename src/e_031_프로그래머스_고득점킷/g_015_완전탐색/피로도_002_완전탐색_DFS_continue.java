@@ -18,11 +18,10 @@ https://school.programmers.co.kr/learn/courses/30/lessons/87946
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 //Solution
-public class 피로도_001_완전탐색_DFS {
+public class 피로도_002_완전탐색_DFS_continue {
 
     static int answer = 0;
     static boolean[] visit;
@@ -44,12 +43,15 @@ public class 피로도_001_완전탐색_DFS {
 
         for (int i = 0; i < dungeons.length; i++) {
 
-            if (!visit[i] && dungeons[i][0] <= k) {
+            if (visit[i] || dungeons[i][0] > k) continue;
 
-                visit[i] = true;
-                dfs(k - dungeons[i][1], dungeons, depth + 1);
-                visit[i] = false; // 백트래킹
-            }
+            visit[i] = true;
+
+//            String s = String.valueOf(depth + 1) + "\n";
+//            System.out.println(s);
+
+            dfs(k - dungeons[i][1], dungeons, depth + 1);
+            visit[i] = false; // 백트래킹
         }
 
         answer = Math.max(answer, depth);
