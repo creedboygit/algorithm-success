@@ -30,7 +30,7 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 //Solution
-public class 전력망을둘로나누기_001_완전탐색_BFS {
+public class 전력망을둘로나누기_001_완전탐색_BFS_인접행렬 {
 
     static int map[][];
 
