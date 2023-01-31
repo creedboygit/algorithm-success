@@ -100,6 +100,7 @@ public class 전력망을둘로나누기_001_완전탐색_BFS_인접행렬 {
             }
         }
 
+        // cnt와 n - cnt는 각각 연결된 전력망
         return Math.abs(cnt - (n - cnt));
     }
 
