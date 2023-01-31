@@ -45,6 +45,7 @@ public class 전력망을둘로나누기_003_완전탐색_BFS_인접리스트 {
             list[i] = new ArrayList<>();
         }
 
+        // 인접리스트 양방향 연결
         for (int[] wire : wires) {
             int v1 = wire[0];
             int v2 = wire[1];
@@ -53,6 +54,7 @@ public class 전력망을둘로나누기_003_완전탐색_BFS_인접리스트 {
             list[v2].add(v1);
         }
 
+        // 전력망을둘로나누기_004_완전탐색_BFS_인접리스트
         for (int[] wire : wires) {
             int b1 = bfs(wire[0], wire[1], n);
 //            int b2 = bfs(wire[1], wire[0], n);
@@ -92,7 +94,6 @@ public class 전력망을둘로나누기_003_완전탐색_BFS_인접리스트 {
 
         return cnt;
     }
-
 
     public static void main(String[] args) throws Exception {
 
