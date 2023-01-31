@@ -73,7 +73,8 @@ public class 전력망을둘로나누기_002_완전탐색_DFS_인접리스트 {
                 if (visited[j]) cnt++;
             }
 
-            min = Math.min(min, Math.abs(n - (2 * cnt)));
+//            min = Math.min(min, Math.abs(n - (2 * cnt)));
+            min = Math.min(min, Math.abs(cnt - (n - cnt)));
         }
 
         answer = min;
