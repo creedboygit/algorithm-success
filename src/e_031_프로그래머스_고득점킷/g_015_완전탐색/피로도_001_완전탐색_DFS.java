@@ -42,6 +42,7 @@ public class 피로도_001_완전탐색_DFS {
 
     public static void dfs(int k, int[][] dungeons, int depth) {
 
+        // 돌 수 있는 던젼이 하나도 없는 경우
         answer = Math.max(answer, depth); // dfs를 돌 때마다 최대값 계산 // for문 앞에 있어도 되고 뒤에 있어도 된다?
 
         for (int i = 0; i < dungeons.length; i++) {
