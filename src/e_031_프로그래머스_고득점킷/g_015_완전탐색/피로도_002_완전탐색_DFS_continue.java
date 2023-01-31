@@ -54,7 +54,7 @@ public class 피로도_002_완전탐색_DFS_continue {
             visit[i] = false; // 백트래킹
         }
 
-        answer = Math.max(answer, depth);
+        answer = Math.max(answer, depth); // dfs를 돌 때마다 최대값 계산 // for문 앞에 있어도 되고 뒤에 있어도 된다?
     }
 
     public static void main(String[] args) throws Exception {
