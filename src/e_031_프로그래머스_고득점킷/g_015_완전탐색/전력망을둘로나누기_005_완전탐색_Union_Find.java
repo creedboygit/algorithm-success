@@ -18,6 +18,12 @@ https://school.programmers.co.kr/learn/courses/30/lessons/86971
 7 8
 7 9
 
+4
+1 2
+2 3
+3 4
+정답 : 0
+
 
 정답 : 3
 
@@ -63,23 +69,21 @@ public class 전력망을둘로나누기_005_완전탐색_Union_Find {
         return answer;
     }
 
-    public static void union(int a, int b) {
-        int fa = find(a);
-        int fb = find(b);
-
-        if (fb < fa) {
-            int tmp = fa;
-            fa = fb;
-            fb = tmp;
-        }
-
-        if (fa != fb) parent[fb] = fa;
+    public static int find(int a) {
+        if (a == parent[a])
+            return parent[a];
+        else
+            return parent[a] = find(parent[a]);
     }
 
-    public static int find(int x) {
-        if (parent[x] == x) return x;
+    public static void union(int a, int b) {
+        a = find(a);
+        b = find(b);
 
-        return find(parent[x]);
+        if (a > b)
+            parent[a] = b;
+        else
+            parent[b] = a;
     }
 
     public static void main(String[] args) throws Exception {
