@@ -22,11 +22,10 @@ https://school.programmers.co.kr/learn/courses/30/lessons/42861
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.StringTokenizer;
 
 //Solution
-public class 섬연결하기_003_크루스칼 {
+public class 섬연결하기_005_크루스칼_UnionFind {
 
     static int[] parent;
 
@@ -41,10 +40,7 @@ public class 섬연결하기_003_크루스칼 {
         a = find(a);
         b = find(b);
 
-        if (a > b)
-            parent[a] = b;
-        else
-            parent[b] = a;
+        parent[a] = b;
     }
 
     public static int solution(int n, int[][] costs) {
@@ -57,23 +53,20 @@ public class 섬연결하기_003_크루스칼 {
             parent[i] = i; // 집합 배열 초기화
         }
 
-        Arrays.sort(costs, new Comparator<int[]>() {
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                if (o1[2] > o2[2]) // 비용으로 오름차순 정렬
-                    return 1;
-                else
-                    return -1;
+        Arrays.sort(costs, (a, b) -> Integer.compare(a[2], b[2]));
 
-//                return o1[2] - o2[2]; // 이걸로만 해도 된다.
+        int cnt = 0;
+
+        for (int[] i : costs) {
+            int a = find(i[0]);
+            int b = find(i[1]);
+
+            if (a != b) { // 연결되어 있지 않으면
+                answer += i[2]; // 최소 비용을 더해준다.
+                union(i[0], i[1]);
+
+                if (cnt == n - 1) return answer; // 간선은 무조건 노드 개수 -1 한 것이므로 간선의 개수만큼만 돌아서 시간 복잡도를 아낀다.
             }
-        });
-
-        for (int i = 0; i < costs.length; i++) {
-            if (find(costs[i][0]) == find(costs[i][1]))
-                continue;
-            union(costs[i][0], costs[i][1]);
-            answer += costs[i][2];
         }
 
         return answer;

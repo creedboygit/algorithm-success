@@ -26,7 +26,7 @@ import java.util.Comparator;
 import java.util.StringTokenizer;
 
 //Solution
-public class 섬연결하기_004_크루스칼 {
+public class 섬연결하기_004_크루스칼_UnionFind {
 
     static int[] parent;
 

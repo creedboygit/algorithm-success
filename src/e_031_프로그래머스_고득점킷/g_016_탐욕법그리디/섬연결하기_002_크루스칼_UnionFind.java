@@ -22,52 +22,41 @@ https://school.programmers.co.kr/learn/courses/30/lessons/42861
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.StringTokenizer;
 
 //Solution
-public class 섬연결하기_005_크루스칼 {
+public class 섬연결하기_002_크루스칼_UnionFind {
 
     static int[] parent;
-
-    public static int find(int a) {
-        if (a == parent[a])
-            return parent[a];
-        else
-            return parent[a] = find(parent[a]);
-    }
-
-    public static void union(int a, int b) {
-        a = find(a);
-        b = find(b);
-
-        parent[a] = b;
-    }
 
     public static int solution(int n, int[][] costs) {
 
         int answer = 0;
 
+        // 크루스칼 알고리즘을 사용하기 위해 가중치 기준 오름차순 정렬
+        Arrays.sort(costs, (int[] c1, int[] c2) -> c1[2] - c2[2]);
+
+        // Union & Find를 사용하기 위해 parent 배열 선언
         parent = new int[n];
 
-        for (int i = 0; i < parent.length; i++) {
-            parent[i] = i; // 집합 배열 초기화
+        for (int i = 0; i < n; i++) {
+            parent[i] = i; // 처음에는 자기 자신으로 부모를 초기화 (집합을 초기화)
         }
 
-        Arrays.sort(costs, (a, b) -> Integer.compare(a[2], b[2]));
+        for (int[] edge : costs) {
+            int from = edge[0];
+            int to = edge[1];
+            int cost = edge[2];
 
-        int cnt = 0;
+            int fromParent = findParent(from);
+            int toParent = findParent(to);
 
-        for (int[] i : costs) {
-            int a = find(i[0]);
-            int b = find(i[1]);
+            // 부모노드가 같으면 (같은 집합이면) (두 노드가 같은 그래프 집합에 속하면)
+            // 해당 간선은 선택하지 않는다. (회로 싸이클이 되므로)
+            if (fromParent == toParent) continue;
 
-            if (a != b) { // 연결되어 있지 않으면
-                answer += i[2]; // 최소 비용을 더해준다.
-                union(i[0], i[1]);
-
-                if (cnt == n - 1) return answer; // 간선은 무조건 노드 개수 -1 한 것이므로 간선의 개수만큼만 돌아서 시간 복잡도를 아낀다.
-            }
+            answer += cost; // 아니면 최소이므로 answer에 값을 합해준다.
+            parent[toParent] = fromParent; // 간선을 연결해 두 노드를 같은 집합으로 만든다. (부모 노드를 갱신)
         }
 
         return answer;
