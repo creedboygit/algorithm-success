@@ -38,7 +38,6 @@ public class 전력망을둘로나누기_005_완전탐색_Union_Find {
 
     static int[] parent;
 
-    // bfs에서 연결이 끊긴것을 v1에서 v2로 가는 경우를 제외함으로 해결하였다.
     public static int solution(int n, int[][] wires) {
 
         int answer = Integer.MAX_VALUE;
