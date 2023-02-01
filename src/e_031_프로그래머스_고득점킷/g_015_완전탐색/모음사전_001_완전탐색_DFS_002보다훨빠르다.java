@@ -20,7 +20,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 //Solution
-public class 모음사전_001_완전탐색_DFS {
+public class 모음사전_001_완전탐색_DFS_002보다훨빠르다 {
 
     static ArrayList<String> list;
     static String[] arr;
@@ -43,17 +43,22 @@ public class 모음사전_001_완전탐색_DFS {
             }
         }
 
+//        System.out.println(list);
+
         return answer;
     }
 
     public static void dfs(String word, String str, int depth) {
 
         list.add(str);
+//        System.out.println(str);
 
         if (depth == 5)
             return;
 
         for (int i = 0; i < arr.length; i++) {
+
+//            System.out.println(str + arr[i]);
             dfs(word, str + arr[i], depth + 1);
         }
     }
