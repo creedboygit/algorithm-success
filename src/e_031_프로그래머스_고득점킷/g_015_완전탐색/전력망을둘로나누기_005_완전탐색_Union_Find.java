@@ -63,6 +63,8 @@ public class 전력망을둘로나누기_005_완전탐색_Union_Find {
             }
 
             answer = Math.min(answer, Math.abs(size - (n - size)));
+
+            System.out.println(answer);
         }
 
         return answer;
