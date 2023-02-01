@@ -86,7 +86,7 @@ public class 전력망을둘로나누기_002_완전탐색_DFS_인접리스트 {
 
         for (int num : list[n]) {
 
-            if ((n == v1 && num == v2) || (n == v2 && num == v1)) continue; // dfs에서 현재 송전탑과 인접리스트에 있는 송전탑이 v1, v2인 경우는 건너뛰고
+            if ((v1 == n && v2 == num) || (v2 == n && v1 == num)) continue; // dfs에서 현재 송전탑과 인접리스트에 있는 송전탑이 v1, v2인 경우는 건너뛰고
 
             if (!visited[num]) { // 인접리스트에 있는 송전탑이 아직 방문하지 않은(연결되지 않은) 송전탑이라면 dfs를 계속 실행시킨다.
 
