@@ -17,10 +17,9 @@ AAAAE
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 
 //Solution
-public class 모음사전_005_완전탐색_DFS {
+public class 모음사전_005_완전탐색_DFS_겁나빠름 {
 
     static String[] letters = {"A", "E", "I", "O", "U"};
     static int answer = 0;
